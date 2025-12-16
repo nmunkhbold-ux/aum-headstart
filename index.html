@@ -3,12 +3,11 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>AUM Head Start Program | University Preparation in Mongolia</title>
+<title>Head Start Program | American University of Mongolia</title>
 
 <!-- SEO -->
-<meta name="description" content="AUM Head Start Program is a university preparation program for high school students in Mongolia. Includes university courses, preparation workshops, campus access, recommendation letters, and merit-based scholarships.">
-<meta name="keywords" content="AUM Head Start, university preparation Mongolia, high school university readiness, AUM recommendation letter, study abroad preparation">
-<meta name="author" content="American University of Mongolia">
+<meta name="description" content="AUM Head Start Program is a university preparation program for high school students in Mongolia. Includes university courses, workshops, campus access, certificates, recommendation letters, and a 50% merit-based scholarship.">
+<meta name="keywords" content="AUM Head Start, university preparation Mongolia, high school readiness, American University of Mongolia, merit scholarship">
 <meta name="robots" content="index, follow">
 
 <style>
@@ -23,13 +22,12 @@
 
 body {
   margin: 0;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  font-family: system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
   background: var(--bg);
   color: var(--text);
   line-height: 1.6;
 }
 
-/* HEADER */
 header {
   background: #0f172a;
   color: white;
@@ -39,7 +37,16 @@ header {
   align-items: center;
 }
 
-/* HERO */
+.lang-toggle button {
+  background: transparent;
+  border: 1px solid #cbd5f5;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 20px;
+  cursor: pointer;
+  margin-left: 6px;
+}
+
 .hero {
   padding: 90px 20px;
   text-align: center;
@@ -53,7 +60,7 @@ header {
 }
 
 .hero p {
-  max-width: 780px;
+  max-width: 800px;
   margin: auto;
 }
 
@@ -68,7 +75,6 @@ header {
   margin-top: 25px;
 }
 
-/* SECTIONS */
 .section {
   padding: 65px 18px;
   max-width: 1100px;
@@ -81,16 +87,13 @@ header {
   font-size: 1.9rem;
 }
 
-/* GRID */
 .grid {
   display: grid;
   gap: 20px;
 }
 
 @media (min-width: 768px) {
-  .grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
+  .grid { grid-template-columns: repeat(3, 1fr); }
 }
 
 .card {
@@ -100,21 +103,13 @@ header {
   box-shadow: 0 10px 25px rgba(0,0,0,0.06);
 }
 
-/* PRICING */
 .price-box {
   background: #eef2ff;
   border-radius: 20px;
-  padding: 35px 25px;
+  padding: 35px;
   text-align: center;
 }
 
-.price {
-  font-size: 2.2rem;
-  font-weight: bold;
-  margin: 15px 0;
-}
-
-/* FORM */
 form {
   max-width: 520px;
   margin: auto;
@@ -126,7 +121,6 @@ input, select, textarea {
   margin-bottom: 14px;
   border-radius: 10px;
   border: 1px solid #cbd5f5;
-  font-size: 1rem;
 }
 
 button.submit {
@@ -136,12 +130,10 @@ button.submit {
   color: white;
   border: none;
   border-radius: 30px;
-  font-size: 1rem;
   font-weight: bold;
   cursor: pointer;
 }
 
-/* FOOTER */
 footer {
   background: #0f172a;
   color: #cbd5f5;
@@ -155,129 +147,116 @@ footer {
 <body>
 
 <header>
-  <strong>American University of Mongolia</strong>
+  <strong>AUM Head Start</strong>
+  <div class="lang-toggle">
+    <button onclick="setLang('en')">EN</button>
+    <button onclick="setLang('mn')">MN</button>
+  </div>
 </header>
 
 <!-- HERO -->
 <section class="hero">
-  <h1>Head Start Program</h1>
-  <p>
-    A structured university preparation program designed to help high school students
-    transition confidently into higher education through real university courses,
-    academic workshops, and supervised campus experience.
+  <h1 data-en="Head Start Program at American University of Mongolia"
+      data-mn="Америк Их Сургууль (AUM)-ийн Head Start хөтөлбөр">
+    Head Start Program at American University of Mongolia
+  </h1>
+
+  <p data-en="A structured university preparation program that helps high school students build academic readiness, earn certificates, and strengthen their university applications before graduation."
+     data-mn="Ахлах ангийн сурагчдыг их сургуульд амжилттай суралцахад бэлтгэх, академик чадвар хөгжүүлэх, сертификат олгох, их сургуулийн өргөдлийг бэхжүүлэх зорилготой хөтөлбөр юм.">
   </p>
-  <a href="#apply" class="cta">Apply Now</a>
+
+  <a href="#apply" class="cta"
+     data-en="Apply Now"
+     data-mn="Өргөдөл гаргах">Apply Now</a>
 </section>
 
 <!-- COURSES -->
 <section class="section">
-  <h2>Courses Offered</h2>
+  <h2 data-en="Courses Offered" data-mn="Сургалтын хичээлүүд">Courses Offered</h2>
   <div class="grid">
     <div class="card">
       <h3>Business Finance</h3>
-      <p>
-        Introduces financial literacy, core business concepts, and economic thinking
-        essential for students interested in business and economics majors.
-      </p>
+      <p data-en="Introduces financial literacy and core business concepts."
+         data-mn="Санхүүгийн суурь мэдлэг болон бизнес, эдийн засгийн үндсэн ойлголтуудыг олгоно."></p>
     </div>
     <div class="card">
-      <h3>ESL (English as a Second Language)</h3>
-      <p>
-        Strengthens academic English skills required for university coursework,
-        writing assignments, presentations, and exams.
-      </p>
+      <h3>ESL</h3>
+      <p data-en="Develops academic English skills for university study."
+         data-mn="Их сургуульд суралцахад шаардлагатай академик англи хэлний чадварыг хөгжүүлнэ."></p>
     </div>
     <div class="card">
       <h3>Introduction to Data Science</h3>
-      <p>
-        Builds logical thinking and introduces data analysis concepts increasingly
-        required in modern university programs.
-      </p>
+      <p data-en="Introduces data analysis and logical thinking."
+         data-mn="Өгөгдөлд суурилсан сэтгэлгээ, логик дүн шинжилгээний суурийг эзэмшүүлнэ."></p>
     </div>
   </div>
 </section>
 
 <!-- BENEFITS -->
 <section class="section">
-  <h2>Program Benefits</h2>
+  <h2 data-en="Program Benefits" data-mn="Хөтөлбөрийн давуу талууд">Program Benefits</h2>
   <div class="grid">
     <div class="card">University Preparation Workshops</div>
     <div class="card">Campus Access & Student Experience</div>
-    <div class="card">Easier Admission to AUM</div>
     <div class="card">AUM Faculty Recommendation Letter</div>
     <div class="card">Certificate of Completion</div>
-  </div>
-</section>
-
-<!-- WORKSHOPS -->
-<section class="section">
-  <h2>University Preparation Workshops</h2>
-  <div class="card">
-    <ul>
-      <li>How to choose a major</li>
-      <li>How to write a strong personal statement</li>
-      <li>Study skills for university-level courses</li>
-      <li>Time management and effective note-taking</li>
-      <li>Choosing universities abroad</li>
-    </ul>
-  </div>
-</section>
-
-<!-- CAMPUS -->
-<section class="section">
-  <h2>Campus Access & Student Experience</h2>
-  <div class="card">
-    <ul>
-      <li>Access to AUM library</li>
-      <li>Access to AUM study rooms</li>
-      <li>Opportunity to sit in one real university class</li>
-    </ul>
+    <div class="card">Easier Admission to AUM</div>
   </div>
 </section>
 
 <!-- SCHOLARSHIP -->
 <section class="section">
-  <h2>Online Enrollment Exam & Scholarship</h2>
+  <h2 data-en="Admissions & Scholarship" data-mn="Элсэлт ба тэтгэлэг">Admissions & Scholarship</h2>
   <div class="card">
-    <p>
-      All applicants will take an <strong>online enrollment exam</strong> that evaluates
-      <strong>English and Mathematics</strong> skills to ensure readiness for university-level study.
-    </p>
-    <p>
-      <strong>Students who pass the exam will receive a 50% scholarship</strong>
-      for English and Math-related courses. Scholarships are awarded purely on academic merit.
-    </p>
+    <p data-en="All applicants complete an online English & Math enrollment exam."
+       data-mn="Бүх сурагчид англи хэл болон математикийн онлайн шалгалт өгнө."></p>
+
+    <p data-en="Students who pass the exam automatically receive a 50% merit-based scholarship for all courses."
+       data-mn="Шалгалтад тэнцсэн сурагчид бүх хичээлд 50%-ийн тэтгэлэг автоматаар авна."></p>
   </div>
 </section>
 
-<!-- PRICING -->
+<!-- ENROLLMENT PROCESS -->
 <section class="section">
-  <h2>Program Fees</h2>
-  <div class="price-box">
-    <p><strong>1,500,000 MNT per course</strong></p>
-    <p>Students may enroll in one or multiple courses.</p>
-    <p><strong>Program Start Date:</strong> January 26</p>
+  <h2 data-en="Enrollment Process" data-mn="Бүртгэлийн явц">Enrollment Process</h2>
+  <div class="card">
+    <ol>
+      <li data-en="Submit online application"
+          data-mn="Онлайн өргөдөл илгээх"></li>
+      <li data-en="Complete online English & Math exam"
+          data-mn="Англи хэл, математикийн онлайн шалгалт өгөх"></li>
+      <li data-en="Receive 50% scholarship if passed"
+          data-mn="Тэнцсэн тохиолдолд 50% тэтгэлэг авах"></li>
+      <li data-en="Start courses on January 26"
+          data-mn="1-р сарын 26-нд хичээл эхлэх"></li>
+    </ol>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section">
+  <h2 data-en="Parent FAQ" data-mn="Эцэг эхчүүдийн түгээмэл асуулт">Parent FAQ</h2>
+
+  <div class="card">
+    <p><strong>Is this program safe and supervised?</strong><br>
+    Yes. All campus access and activities are supervised by AUM staff.</p>
+
+    <p><strong>Does this help with university admission?</strong><br>
+    Yes. Students receive certificates and may receive recommendation letters.</p>
+
+    <p><strong>Is the scholarship fair?</strong><br>
+    Yes. Scholarships are awarded only based on exam results.</p>
   </div>
 </section>
 
 <!-- APPLY -->
 <section class="section" id="apply">
-  <h2>Apply Now</h2>
+  <h2 data-en="Apply Now" data-mn="Өргөдөл илгээх">Apply Now</h2>
 
   <form name="headstart-application" method="POST" data-netlify="true">
     <input type="hidden" name="form-name" value="headstart-application">
-
-    <input type="text" name="student_name" placeholder="Student Name" required>
+    <input type="text" name="name" placeholder="Student Name" required>
     <input type="email" name="email" placeholder="Email" required>
-    <input type="tel" name="phone" placeholder="Phone Number" required>
-
-    <select name="course_interest" required>
-      <option value="">Course of Interest</option>
-      <option>Business Finance</option>
-      <option>ESL</option>
-      <option>Introduction to Data Science</option>
-    </select>
-
     <button class="submit">Submit Application</button>
   </form>
 </section>
@@ -287,22 +266,11 @@ footer {
   📞 9670 0510
 </footer>
 
-<!-- STRUCTURED DATA -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "EducationalOrganization",
-  "name": "American University of Mongolia – Head Start Program",
-  "description": "University preparation program offering courses, workshops, campus access, and merit-based scholarships for high school students.",
-  "address": {
-    "@type": "PostalAddress",
-    "addressCountry": "Mongolia"
-  },
-  "contactPoint": {
-    "@type": "ContactPoint",
-    "telephone": "+976-96700510",
-    "contactType": "Admissions"
-  }
+<script>
+function setLang(lang) {
+  document.querySelectorAll("[data-en]").forEach(el => {
+    el.innerText = el.dataset[lang];
+  });
 }
 </script>
 
