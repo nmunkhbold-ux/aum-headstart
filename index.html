@@ -391,3 +391,404 @@ footer {
 
 </body>
 </html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>Head Start Program | American University of Mongolia</title>
+
+<!-- SEO -->
+<meta name="description" content="The AUM Head Start Program prepares high school students in Mongolia for university through real courses, academic workshops, campus experience, and merit-based scholarships.">
+<meta name="keywords" content="AUM Head Start, university preparation Mongolia, high school readiness, American University of Mongolia">
+<meta name="author" content="American University of Mongolia">
+<meta name="robots" content="index, follow">
+
+<style>
+/* ===== ORIGINAL STYLES (UNCHANGED) ===== */
+:root {
+  --primary: #1e3a8a;
+  --primary-light: #3b5998;
+  --secondary: #facc15;
+  --bg: #f8fafc;
+  --border: #e2e8f0;
+  --text: #1f2937;
+  --text-muted: #64748b;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  background: white;
+  color: var(--text);
+  line-height: 1.7;
+}
+
+/* HEADER */
+header {
+  background: white;
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-content {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 16px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-brand {
+  font-weight: 700;
+  color: var(--primary);
+}
+
+/* NAV */
+nav {
+  display: flex;
+  gap: 6px;
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--text-muted);
+  padding: 8px 14px;
+  font-size: 0.9rem;
+}
+
+nav a:hover {
+  color: var(--primary);
+}
+
+nav a.nav-cta {
+  background: var(--primary);
+  color: white;
+  border-radius: var(--radius-md);
+}
+
+/* LOGO */
+.logo-section {
+  background: var(--bg);
+  text-align: center;
+  padding: 70px 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.logo-section img {
+  max-width: 360px;
+  width: 100%;
+}
+
+/* HERO */
+.hero {
+  background: var(--primary);
+  color: white;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 16px;
+}
+
+.hero p {
+  max-width: 720px;
+  margin: auto;
+  opacity: 0.95;
+}
+
+.cta {
+  display: inline-block;
+  margin-top: 32px;
+  padding: 14px 34px;
+  background: var(--secondary);
+  color: #0f172a;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: var(--radius-md);
+}
+
+/* SECTIONS */
+.section {
+  padding: 80px 20px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.section-alt {
+  background: var(--bg);
+}
+
+.section h2 {
+  text-align: center;
+  margin-bottom: 16px;
+  font-size: 1.8rem;
+}
+
+.section-subtitle {
+  text-align: center;
+  color: var(--text-muted);
+  margin-bottom: 48px;
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  gap: 24px;
+}
+
+@media (min-width: 768px) {
+  .grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+.card {
+  background: white;
+  padding: 32px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+}
+
+.card h3 {
+  margin-top: 0;
+  color: var(--primary);
+}
+
+/* BENEFITS */
+.benefits-grid {
+  display: grid;
+  gap: 16px;
+}
+
+@media (min-width: 768px) {
+  .benefits-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+.benefit-card {
+  background: white;
+  padding: 20px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+}
+
+/* INFO CARD */
+.info-card {
+  max-width: 700px;
+  margin: auto;
+  background: white;
+  padding: 40px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+}
+
+.info-card ul {
+  list-style: none;
+  padding: 0;
+}
+
+.info-card li {
+  margin-bottom: 14px;
+  padding-left: 18px;
+  position: relative;
+}
+
+.info-card li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--primary);
+}
+
+/* PRICING */
+.price-box {
+  background: var(--bg);
+  max-width: 520px;
+  margin: auto;
+  padding: 48px 32px;
+  text-align: center;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+}
+
+/* FORM */
+form {
+  max-width: 480px;
+  margin: auto;
+  background: white;
+  padding: 40px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+}
+
+input, select {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 16px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+}
+
+button.submit {
+  width: 100%;
+  padding: 14px;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+}
+
+/* FOOTER */
+footer {
+  background: var(--text);
+  color: white;
+  text-align: center;
+  padding: 40px 20px;
+  font-size: 0.9rem;
+}
+
+/* MOBILE */
+@media (max-width: 767px) {
+  .header-content { flex-direction: column; gap: 12px; }
+  nav { flex-wrap: wrap; justify-content: center; }
+  .hero h1 { font-size: 2rem; }
+}
+
+/* ===== NEW STYLES (APPENDED) ===== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 30px;
+}
+
+th, td {
+  border: 1px solid var(--border);
+  padding: 14px;
+  text-align: center;
+}
+
+th {
+  background: var(--bg);
+  font-weight: 600;
+}
+
+.check {
+  color: var(--primary);
+  font-weight: bold;
+}
+</style>
+</head>
+
+<body>
+
+<!-- ===== ORIGINAL CONTENT (UNCHANGED) ===== -->
+<!-- ... your original sections exactly as-is ... -->
+
+<!-- ===== NEW SECTIONS (APPENDED ONLY) ===== -->
+
+<section class="section">
+  <h2>Spring 2025 Weekly Schedule</h2>
+  <div class="info-card">
+    <p><strong>Time:</strong> 15:00 – 16:30<br>
+       <strong>Classroom:</strong> 204</p>
+
+    <table>
+      <tr>
+        <th>Monday</th>
+        <th>Tuesday</th>
+        <th>Wednesday</th>
+        <th>Thursday</th>
+        <th>Friday</th>
+      </tr>
+      <tr>
+        <td>Business Finance</td>
+        <td>Marketing / Data Science</td>
+        <td>ESL</td>
+        <td>—</td>
+        <td>Self-Development & Workshops</td>
+      </tr>
+    </table>
+  </div>
+</section>
+
+<section class="section-alt">
+<section class="section">
+  <h2>Course Options & Benefits</h2>
+  <p class="section-subtitle">Choose what fits your goals</p>
+
+  <table>
+    <tr>
+      <th>Option</th>
+      <th>Campus Access</th>
+      <th>Workshops</th>
+      <th>Recommendation Letter</th>
+      <th>Total Price</th>
+      <th>With 50% Scholarship</th>
+    </tr>
+    <tr>
+      <td>1 Course</td>
+      <td class="check">✔</td>
+      <td>—</td>
+      <td>—</td>
+      <td>1,500,000</td>
+      <td>750,000</td>
+    </tr>
+    <tr>
+      <td>2 Courses</td>
+      <td class="check">✔</td>
+      <td class="check">✔</td>
+      <td>—</td>
+      <td>3,000,000</td>
+      <td>1,500,000</td>
+    </tr>
+    <tr>
+      <td><strong>3-Course Bundle</strong></td>
+      <td class="check">✔</td>
+      <td class="check">✔</td>
+      <td class="check">✔</td>
+      <td><strong>4,500,000</strong></td>
+      <td><strong>2,250,000</strong></td>
+    </tr>
+  </table>
+</section>
+</section>
+
+<section class="section">
+  <h2>Admission Process</h2>
+  <div class="info-card">
+    <ol>
+      <li>Submit the online application</li>
+      <li>Take the online English & Math placement exam</li>
+      <li>Receive your scholarship result</li>
+      <li>Complete enrollment & course registration</li>
+    </ol>
+    <p>
+      As a Head Start student, you are already part of the AUM family.
+      You simply complete the standard enrollment steps with
+      <strong>priority placement and scholarships already secured</strong>.
+    </p>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 American University of Mongolia · Head Start Program</p>
+  <p>Admissions: 72722626</p>
+</footer>
+
+</body>
+</html>
+
