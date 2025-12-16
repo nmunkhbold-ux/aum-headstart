@@ -478,20 +478,178 @@ footer p {
 @media (max-width: 767px) {
   .header-content { 
     flex-direction: column; 
-    gap: 16px; 
-    padding: 16px 20px;
+    gap: 12px; 
+    padding: 12px 16px;
   }
+  
+  .header-brand {
+    font-size: 1rem;
+    text-align: center;
+  }
+  
   nav { 
     flex-wrap: wrap; 
-    justify-content: center; 
+    justify-content: center;
+    gap: 6px;
   }
-  .hero { padding: 80px 20px; }
-  .hero h1 { font-size: 2.2rem; }
-  .hero p { font-size: 1.1rem; }
-  .section h2 { font-size: 2rem; }
-  .stats-container { grid-template-columns: 1fr; gap: 24px; }
-  table { font-size: 0.85rem; }
-  th, td { padding: 12px 8px; }
+  
+  nav a {
+    padding: 8px 12px;
+    font-size: 0.85rem;
+  }
+  
+  nav a.nav-cta {
+    padding: 8px 20px;
+  }
+  
+  .hero { 
+    padding: 60px 20px; 
+  }
+  
+  .hero-badge {
+    font-size: 0.8rem;
+    padding: 6px 16px;
+  }
+  
+  .hero h1 { 
+    font-size: 1.8rem;
+    margin-bottom: 16px;
+  }
+  
+  .hero p { 
+    font-size: 1rem;
+    margin-bottom: 32px;
+  }
+  
+  .cta {
+    padding: 14px 32px;
+    font-size: 1rem;
+  }
+  
+  .stats-bar {
+    padding: 32px 16px;
+  }
+  
+  .stats-container { 
+    grid-template-columns: 1fr; 
+    gap: 20px; 
+  }
+  
+  .stat-item h3 {
+    font-size: 2rem;
+  }
+  
+  .section { 
+    padding: 60px 16px; 
+  }
+  
+  .section h2 { 
+    font-size: 1.75rem;
+    margin-bottom: 12px;
+  }
+  
+  .section-subtitle {
+    font-size: 1rem;
+    margin-bottom: 40px;
+  }
+  
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .card {
+    padding: 32px 24px;
+  }
+  
+  .card-icon {
+    width: 48px;
+    height: 48px;
+    font-size: 1.5rem;
+  }
+  
+  .card h3 {
+    font-size: 1.2rem;
+  }
+  
+  .benefits-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .benefit-card {
+    padding: 20px;
+    font-size: 0.95rem;
+  }
+  
+  .schedule-container {
+    padding: 24px 16px;
+    margin: 24px auto;
+  }
+  
+  .schedule-header p {
+    font-size: 0.95rem;
+  }
+  
+  table { 
+    font-size: 0.75rem; 
+  }
+  
+  th, td { 
+    padding: 10px 6px; 
+  }
+  
+  th {
+    font-size: 0.7rem;
+  }
+  
+  .pricing-table {
+    margin: 24px -16px;
+    padding: 0 16px;
+  }
+  
+  .pricing-table table {
+    font-size: 0.8rem;
+  }
+  
+  .pricing-table th,
+  .pricing-table td {
+    padding: 8px 6px;
+  }
+  
+  .info-card {
+    padding: 32px 24px;
+  }
+  
+  .info-card li {
+    font-size: 0.95rem;
+    padding-left: 28px;
+  }
+  
+  .scholarship-box {
+    padding: 32px 24px;
+    margin: 24px auto;
+  }
+  
+  .scholarship-box h3 {
+    font-size: 1.5rem;
+  }
+  
+  .scholarship-box .big-number {
+    font-size: 3rem;
+  }
+  
+  .scholarship-box p {
+    font-size: 1rem !important;
+  }
+  
+  footer {
+    padding: 40px 20px;
+  }
+  
+  footer p {
+    font-size: 0.9rem;
+  }
 }
 </style>
 </head>
@@ -677,7 +835,7 @@ footer p {
     <ol>
       <li>Submit the online application form below</li>
       <li>Take the online English & Math placement exam</li>
-      <li>Receive your scholarship result </li>
+      <li>Receive your scholarship result within 3 business days</li>
       <li>Complete enrollment and course registration</li>
     </ol>
     <p style="margin-top: 32px; padding-top: 32px; border-top: 2px solid var(--border); font-size: 1.05rem;">
