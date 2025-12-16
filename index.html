@@ -14,9 +14,19 @@
 <style>
 :root {
   --primary: #1e3a8a;
+  --primary-light: #3b5998;
   --secondary: #facc15;
   --bg: #f8fafc;
+  --bg-alt: #eef2ff;
   --text: #1f2937;
+  --text-muted: #64748b;
+  --border: #e2e8f0;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+  --shadow-lg: 0 10px 30px rgba(0,0,0,0.1);
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
 }
 
 * { box-sizing: border-box; }
@@ -28,24 +38,24 @@ html {
 body {
   margin: 0;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-  background: var(--bg);
+  background: white;
   color: var(--text);
-  line-height: 1.6;
+  line-height: 1.7;
 }
 
 /* HEADER */
 header {
-  background: #0f172a;
-  color: white;
-  padding: 20px 24px;
+  background: white;
+  color: var(--text);
+  padding: 16px 24px;
   position: sticky;
   top: 0;
   z-index: 100;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  border-bottom: 1px solid var(--border);
 }
 
 .header-content {
-  max-width: 1200px;
+  max-width: 1100px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
@@ -53,120 +63,132 @@ header {
 }
 
 .header-brand {
-  font-weight: bold;
-  font-size: 1.1rem;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--primary);
+  letter-spacing: -0.01em;
 }
 
 /* NAVIGATION */
 nav {
   display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
+  gap: 4px;
+  align-items: center;
 }
 
 nav a {
-  color: #cbd5e1;
+  color: var(--text-muted);
   text-decoration: none;
-  padding: 8px 14px;
-  border-radius: 20px;
+  padding: 8px 16px;
   font-size: 0.9rem;
-  transition: all 0.2s ease;
+  font-weight: 500;
+  transition: color 0.2s ease;
 }
 
 nav a:hover {
-  background: rgba(255,255,255,0.1);
-  color: white;
+  color: var(--primary);
 }
 
 nav a.nav-cta {
-  background: var(--secondary);
-  color: #0f172a;
-  font-weight: 600;
+  background: var(--primary);
+  color: white;
+  border-radius: var(--radius-md);
+  margin-left: 8px;
 }
 
 nav a.nav-cta:hover {
-  background: #fde047;
+  background: var(--primary-light);
 }
 
 /* LOGO SECTION */
 .logo-section {
-  background: linear-gradient(180deg, #0f172a 0%, #1e3a8a 100%);
+  background: var(--bg);
   text-align: center;
-  padding: 50px 20px;
+  padding: 60px 20px 40px;
+  border-bottom: 1px solid var(--border);
 }
 
 .logo-section img {
   max-width: 280px;
   width: 100%;
   height: auto;
-  filter: drop-shadow(0 8px 20px rgba(0,0,0,0.3));
 }
 
 @media (min-width: 768px) {
   .logo-section img {
-    max-width: 350px;
+    max-width: 360px;
   }
   .logo-section {
-    padding: 60px 20px;
+    padding: 80px 20px 60px;
   }
 }
 
 /* HERO */
 .hero {
-  padding: 60px 20px 80px;
+  padding: 80px 20px;
   text-align: center;
-  background: linear-gradient(180deg, #1e3a8a 0%, #3b5998 100%);
+  background: var(--primary);
   color: white;
 }
 
 .hero h1 {
-  font-size: 2.6rem;
-  margin-bottom: 16px;
+  font-size: 2.5rem;
+  margin: 0 0 20px;
   font-weight: 700;
+  letter-spacing: -0.02em;
 }
 
 .hero p {
-  max-width: 780px;
-  margin: auto;
-  font-size: 1.1rem;
-  opacity: 0.95;
+  max-width: 680px;
+  margin: 0 auto;
+  font-size: 1.15rem;
+  opacity: 0.9;
+  line-height: 1.8;
 }
 
 .cta {
   background: var(--secondary);
-  color: black;
-  padding: 16px 36px;
-  border-radius: 30px;
+  color: #0f172a;
+  padding: 14px 32px;
+  border-radius: var(--radius-md);
   text-decoration: none;
-  font-weight: bold;
+  font-weight: 600;
   display: inline-block;
-  margin-top: 30px;
-  font-size: 1.1rem;
+  margin-top: 32px;
+  font-size: 1rem;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-  box-shadow: 0 4px 15px rgba(250, 204, 21, 0.4);
 }
 
 .cta:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(250, 204, 21, 0.5);
+  box-shadow: 0 4px 12px rgba(250, 204, 21, 0.4);
 }
 
 /* SECTIONS */
 .section {
-  padding: 70px 20px;
-  max-width: 1100px;
-  margin: auto;
+  padding: 80px 20px;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
-.section:nth-child(odd) {
-  background: white;
+.section-alt {
+  background: var(--bg);
 }
 
 .section h2 {
   text-align: center;
-  margin-bottom: 40px;
-  font-size: 2rem;
-  color: var(--primary);
+  margin: 0 0 16px;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.02em;
+}
+
+.section-subtitle {
+  text-align: center;
+  color: var(--text-muted);
+  margin: 0 0 48px;
+  font-size: 1rem;
 }
 
 /* GRID */
@@ -183,28 +205,35 @@ nav a.nav-cta:hover {
 
 .card {
   background: white;
-  padding: 28px;
-  border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  border: 1px solid #e2e8f0;
+  padding: 32px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border);
+  transition: box-shadow 0.2s ease;
 }
 
 .card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+  box-shadow: var(--shadow-md);
 }
 
 .card h3 {
   color: var(--primary);
-  margin-top: 0;
-  margin-bottom: 12px;
+  margin: 0 0 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
 }
 
-/* BENEFITS GRID - 5 items layout */
+.card p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+/* BENEFITS GRID */
 .benefits-grid {
   display: grid;
-  gap: 20px;
+  gap: 16px;
   grid-template-columns: 1fr;
 }
 
@@ -218,117 +247,186 @@ nav a.nav-cta:hover {
   .benefits-grid {
     grid-template-columns: repeat(3, 1fr);
   }
-  .benefits-grid .card:nth-child(4),
-  .benefits-grid .card:nth-child(5) {
-    grid-column: span 1;
-  }
 }
 
 .benefit-card {
-  background: linear-gradient(135deg, #eef2ff 0%, #dbeafe 100%);
-  padding: 24px;
-  border-radius: 16px;
-  text-align: center;
-  font-weight: 600;
-  color: var(--primary);
-  border: 2px solid #c7d2fe;
-  transition: transform 0.2s ease;
+  background: white;
+  padding: 20px 24px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 500;
+  color: var(--text);
+  border: 1px solid var(--border);
+  font-size: 0.95rem;
 }
 
-.benefit-card:hover {
-  transform: translateY(-3px);
+.benefit-card::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  background: var(--primary);
+  border-radius: 50%;
+  flex-shrink: 0;
 }
 
-/* WORKSHOP & CAMPUS CARDS */
+/* INFO CARDS */
 .info-card {
   background: white;
-  padding: 32px;
-  border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-  border: 1px solid #e2e8f0;
+  padding: 40px;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border);
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.info-card p {
+  margin: 0 0 16px;
+  color: var(--text-muted);
+  line-height: 1.8;
+}
+
+.info-card p:last-child {
+  margin-bottom: 0;
+}
+
+.info-card strong {
+  color: var(--text);
 }
 
 .info-card ul {
   margin: 0;
-  padding-left: 24px;
+  padding: 0;
+  list-style: none;
 }
 
 .info-card li {
-  margin-bottom: 12px;
+  margin-bottom: 16px;
+  padding-left: 24px;
+  position: relative;
+  color: var(--text-muted);
   line-height: 1.7;
+}
+
+.info-card li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 10px;
+  width: 6px;
+  height: 6px;
+  background: var(--primary);
+  border-radius: 50%;
+}
+
+.info-card li:last-child {
+  margin-bottom: 0;
 }
 
 /* PRICING */
 .price-box {
-  background: linear-gradient(135deg, #eef2ff 0%, #dbeafe 100%);
-  border-radius: 24px;
-  padding: 45px 30px;
+  background: var(--bg);
+  border-radius: var(--radius-lg);
+  padding: 48px 32px;
   text-align: center;
-  border: 2px solid #c7d2fe;
-  max-width: 600px;
+  border: 1px solid var(--border);
+  max-width: 500px;
   margin: 0 auto;
 }
 
-.price-box p {
-  margin: 12px 0;
-  font-size: 1.1rem;
+.price-box .price {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin: 0 0 8px;
 }
 
-.price-box strong {
-  color: var(--primary);
+.price-box p {
+  margin: 0 0 8px;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.price-box p:last-child {
+  margin-bottom: 0;
+}
+
+.price-box .date {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  font-weight: 600;
+  color: var(--text);
 }
 
 /* FORM */
 form {
-  max-width: 520px;
-  margin: auto;
+  max-width: 480px;
+  margin: 0 auto;
   background: white;
   padding: 40px;
-  border-radius: 20px;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border);
 }
 
 input, select, textarea {
   width: 100%;
   padding: 14px 16px;
   margin-bottom: 16px;
-  border-radius: 12px;
-  border: 2px solid #e2e8f0;
-  font-size: 1rem;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  font-size: 0.95rem;
+  transition: border-color 0.2s ease;
+  background: var(--bg);
 }
 
 input:focus, select:focus, textarea:focus {
   outline: none;
   border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.1);
+  background: white;
+}
+
+input::placeholder {
+  color: var(--text-muted);
 }
 
 button.submit {
   width: 100%;
-  padding: 16px;
+  padding: 14px;
   background: var(--primary);
   color: white;
   border: none;
-  border-radius: 30px;
-  font-size: 1.1rem;
-  font-weight: bold;
+  border-radius: var(--radius-md);
+  font-size: 1rem;
+  font-weight: 600;
   cursor: pointer;
-  transition: background 0.2s ease, transform 0.2s ease;
+  transition: background 0.2s ease;
+  margin-top: 8px;
 }
 
 button.submit:hover {
-  background: #1e40af;
-  transform: translateY(-2px);
+  background: var(--primary-light);
 }
 
 /* FOOTER */
 footer {
-  background: #0f172a;
-  color: #cbd5f5;
+  background: var(--text);
+  color: white;
   text-align: center;
-  padding: 35px 20px;
+  padding: 40px 20px;
   font-size: 0.9rem;
+}
+
+footer p {
+  margin: 0 0 8px;
+  opacity: 0.8;
+}
+
+footer p:last-child {
+  margin-bottom: 0;
 }
 
 footer a {
@@ -336,21 +434,34 @@ footer a {
   text-decoration: none;
 }
 
-/* MOBILE NAV */
+/* MOBILE */
 @media (max-width: 767px) {
   .header-content {
     flex-direction: column;
-    gap: 12px;
+    gap: 16px;
   }
   nav {
+    flex-wrap: wrap;
     justify-content: center;
   }
   nav a {
-    padding: 6px 10px;
+    padding: 6px 12px;
     font-size: 0.85rem;
   }
   .hero h1 {
     font-size: 2rem;
+  }
+  .hero {
+    padding: 60px 20px;
+  }
+  .section {
+    padding: 60px 20px;
+  }
+  .info-card {
+    padding: 28px;
+  }
+  form {
+    padding: 28px;
   }
 }
 </style>
@@ -391,6 +502,7 @@ footer a {
 <!-- COURSES -->
 <section class="section" id="courses">
   <h2>Courses Offered</h2>
+  <p class="section-subtitle">Choose from three university-level courses designed for high school students</p>
   <div class="grid">
     <div class="card">
       <h3>Business Finance</h3>
@@ -417,8 +529,10 @@ footer a {
 </section>
 
 <!-- BENEFITS -->
+<div class="section-alt">
 <section class="section" id="benefits">
   <h2>Program Benefits</h2>
+  <p class="section-subtitle">What you get from the Head Start Program</p>
   <div class="benefits-grid">
     <div class="benefit-card">University Preparation Workshops</div>
     <div class="benefit-card">Campus Access & Student Experience</div>
@@ -427,10 +541,12 @@ footer a {
     <div class="benefit-card">Certificate of Completion</div>
   </div>
 </section>
+</div>
 
 <!-- WORKSHOPS -->
 <section class="section" id="workshops">
   <h2>University Preparation Workshops</h2>
+  <p class="section-subtitle">Develop essential skills for academic success</p>
   <div class="info-card">
     <ul>
       <li>How to choose a major</li>
@@ -443,8 +559,10 @@ footer a {
 </section>
 
 <!-- CAMPUS -->
+<div class="section-alt">
 <section class="section" id="campus">
   <h2>Campus Access & Student Experience</h2>
+  <p class="section-subtitle">Experience university life firsthand</p>
   <div class="info-card">
     <ul>
       <li>Access to AUM library</li>
@@ -453,10 +571,12 @@ footer a {
     </ul>
   </div>
 </section>
+</div>
 
 <!-- SCHOLARSHIP -->
 <section class="section" id="scholarship">
   <h2>Online Enrollment Exam & Scholarship</h2>
+  <p class="section-subtitle">Merit-based financial support for qualifying students</p>
   <div class="info-card">
     <p>
       All applicants will take an <strong>online enrollment exam</strong> that evaluates
@@ -470,18 +590,21 @@ footer a {
 </section>
 
 <!-- PRICING -->
+<div class="section-alt">
 <section class="section" id="pricing">
   <h2>Program Fees</h2>
   <div class="price-box">
-    <p><strong>1,500,000 MNT per course</strong></p>
+    <p class="price">1,500,000 MNT per course</p>
     <p>Students may enroll in one or multiple courses.</p>
-    <p><strong>Program Start Date:</strong> January 26</p>
+    <p class="date">Program Start Date: January 26</p>
   </div>
 </section>
+</div>
 
 <!-- APPLY -->
 <section class="section" id="apply">
   <h2>Apply Now</h2>
+  <p class="section-subtitle">Start your university preparation journey today</p>
 
   <form name="headstart-application" method="POST" data-netlify="true">
     <input type="hidden" name="form-name" value="headstart-application">
@@ -502,8 +625,8 @@ footer a {
 </section>
 
 <footer>
-  © 2025 American University of Mongolia · Head Start Program<br>
-  📞 9670 0510
+  <p>© 2025 American University of Mongolia · Head Start Program</p>
+  <p>9670 0510</p>
 </footer>
 
 <!-- STRUCTURED DATA -->
