@@ -472,7 +472,7 @@ form {
   box-shadow: var(--shadow-lg);
 }
 
-input, select {
+input, select, textarea {
   width: 100%;
   padding: 16px;
   margin-bottom: 20px;
@@ -480,11 +480,35 @@ input, select {
   border: 2px solid var(--border);
   font-size: 1rem;
   transition: border-color 0.2s ease;
+  font-family: inherit;
 }
 
-input:focus, select:focus {
+textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+input:focus, select:focus, textarea:focus {
   outline: none;
   border-color: var(--primary);
+}
+
+input[type="checkbox"] {
+  width: auto;
+  margin-right: 12px;
+  margin-bottom: 0;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+  cursor: pointer;
+}
+
+.checkbox-label span {
+  font-size: 0.95rem;
+  line-height: 1.5;
 }
 
 button.submit {
@@ -538,6 +562,7 @@ footer p {
   .stats-container { grid-template-columns: 1fr; gap: 24px; }
   table { font-size: 0.85rem; }
   th, td { padding: 12px 8px; }
+  form { padding: 32px 24px; }
 }
 </style>
 </head>
@@ -739,17 +764,60 @@ footer p {
   <p class="section-subtitle">Start your university journey today</p>
   <form name="headstart-application" method="POST" data-netlify="true">
     <input type="hidden" name="form-name" value="headstart-application">
-    <input type="text" name="student_name" placeholder="Student Name" required>
-    <input type="email" name="email" placeholder="Email Address" required>
+    
+    <input type="text" name="full_name" placeholder="Full Name" required>
+    
+    <input type="date" name="date_of_birth" placeholder="Date of Birth" required>
+    
+    <select name="grade_level" required>
+      <option value="">Select Grade Level</option>
+      <option>Grade 9</option>
+      <option>Grade 10</option>
+      <option>Grade 11</option>
+      <option>Grade 12</option>
+    </select>
+    
+    <input type="text" name="high_school" placeholder="High School Name" required>
+    
     <input type="tel" name="phone" placeholder="Phone Number" required>
+    
+    <input type="email" name="email" placeholder="Email Address" required>
+    
+    <input type="text" name="gpa" placeholder="Current GPA (голч дүн)" required>
+    
+    <select name="english_proficiency" required>
+      <option value="">English Proficiency Test Taken?</option>
+      <option>Yes</option>
+      <option>No</option>
+    </select>
+    
+    <input type="text" name="test_details" placeholder="If yes, test name and score (e.g., IELTS 6.5)">
+    
     <select name="course_interest" required>
-      <option value="">Select Course of Interest</option>
+      <option value="">Course of Interest</option>
       <option>Business Finance</option>
       <option>ESL</option>
-      <option>Introduction to Data Science</option>
-      <option>Multiple Courses</option>
+      <option>Data Science</option>
+      <option>Marketing</option>
     </select>
-    <button class="submit">Submit Application</button>
+    
+    <select name="num_courses" required>
+      <option value="">Preferred Number of Courses</option>
+      <option>1 Course</option>
+      <option>2 Courses</option>
+      <option>3 Courses (Full Bundle)</option>
+    </select>
+    
+    <textarea name="motivation" placeholder="Why do you want to join the Head Start Program?" rows="4" required></textarea>
+    
+    <textarea name="goals" placeholder="What are your future academic/career goals?" rows="4" required></textarea>
+    
+    <label class="checkbox-label">
+      <input type="checkbox" name="commitment" required>
+      <span>I commit to attending all classes and completing assignments at a university standard</span>
+    </label>
+    
+    <button class="submit" type="submit">Submit Application</button>
   </form>
 </section>
 
