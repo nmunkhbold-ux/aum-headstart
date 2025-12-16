@@ -21,6 +21,10 @@
 
 * { box-sizing: border-box; }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
@@ -33,58 +37,142 @@ body {
 header {
   background: #0f172a;
   color: white;
-  padding: 14px 18px;
+  padding: 20px 24px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
+.header-brand {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+/* NAVIGATION */
+nav {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+nav a {
+  color: #cbd5e1;
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+
+nav a:hover {
+  background: rgba(255,255,255,0.1);
+  color: white;
+}
+
+nav a.nav-cta {
+  background: var(--secondary);
+  color: #0f172a;
+  font-weight: 600;
+}
+
+nav a.nav-cta:hover {
+  background: #fde047;
+}
+
+/* LOGO SECTION */
+.logo-section {
+  background: linear-gradient(180deg, #0f172a 0%, #1e3a8a 100%);
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.logo-section img {
+  max-width: 280px;
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 8px 20px rgba(0,0,0,0.3));
+}
+
+@media (min-width: 768px) {
+  .logo-section img {
+    max-width: 350px;
+  }
+  .logo-section {
+    padding: 60px 20px;
+  }
+}
+
 /* HERO */
 .hero {
-  padding: 90px 20px;
+  padding: 60px 20px 80px;
   text-align: center;
-  background: linear-gradient(135deg, #0f172a, #1e3a8a);
+  background: linear-gradient(180deg, #1e3a8a 0%, #3b5998 100%);
   color: white;
 }
 
 .hero h1 {
-  font-size: 2.4rem;
-  margin-bottom: 12px;
+  font-size: 2.6rem;
+  margin-bottom: 16px;
+  font-weight: 700;
 }
 
 .hero p {
   max-width: 780px;
   margin: auto;
+  font-size: 1.1rem;
+  opacity: 0.95;
 }
 
 .cta {
   background: var(--secondary);
   color: black;
-  padding: 14px 28px;
+  padding: 16px 36px;
   border-radius: 30px;
   text-decoration: none;
   font-weight: bold;
   display: inline-block;
-  margin-top: 25px;
+  margin-top: 30px;
+  font-size: 1.1rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 15px rgba(250, 204, 21, 0.4);
+}
+
+.cta:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(250, 204, 21, 0.5);
 }
 
 /* SECTIONS */
 .section {
-  padding: 65px 18px;
+  padding: 70px 20px;
   max-width: 1100px;
   margin: auto;
 }
 
+.section:nth-child(odd) {
+  background: white;
+}
+
 .section h2 {
   text-align: center;
-  margin-bottom: 35px;
-  font-size: 1.9rem;
+  margin-bottom: 40px;
+  font-size: 2rem;
+  color: var(--primary);
 }
 
 /* GRID */
 .grid {
   display: grid;
-  gap: 20px;
+  gap: 24px;
 }
 
 @media (min-width: 768px) {
@@ -95,50 +183,143 @@ header {
 
 .card {
   background: white;
-  padding: 26px;
+  padding: 28px;
   border-radius: 16px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border: 1px solid #e2e8f0;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+}
+
+.card h3 {
+  color: var(--primary);
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+/* BENEFITS GRID - 5 items layout */
+.benefits-grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 600px) {
+  .benefits-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 900px) {
+  .benefits-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .benefits-grid .card:nth-child(4),
+  .benefits-grid .card:nth-child(5) {
+    grid-column: span 1;
+  }
+}
+
+.benefit-card {
+  background: linear-gradient(135deg, #eef2ff 0%, #dbeafe 100%);
+  padding: 24px;
+  border-radius: 16px;
+  text-align: center;
+  font-weight: 600;
+  color: var(--primary);
+  border: 2px solid #c7d2fe;
+  transition: transform 0.2s ease;
+}
+
+.benefit-card:hover {
+  transform: translateY(-3px);
+}
+
+/* WORKSHOP & CAMPUS CARDS */
+.info-card {
+  background: white;
+  padding: 32px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  border: 1px solid #e2e8f0;
+}
+
+.info-card ul {
+  margin: 0;
+  padding-left: 24px;
+}
+
+.info-card li {
+  margin-bottom: 12px;
+  line-height: 1.7;
 }
 
 /* PRICING */
 .price-box {
-  background: #eef2ff;
-  border-radius: 20px;
-  padding: 35px 25px;
+  background: linear-gradient(135deg, #eef2ff 0%, #dbeafe 100%);
+  border-radius: 24px;
+  padding: 45px 30px;
   text-align: center;
+  border: 2px solid #c7d2fe;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
-.price {
-  font-size: 2.2rem;
-  font-weight: bold;
-  margin: 15px 0;
+.price-box p {
+  margin: 12px 0;
+  font-size: 1.1rem;
+}
+
+.price-box strong {
+  color: var(--primary);
 }
 
 /* FORM */
 form {
   max-width: 520px;
   margin: auto;
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.1);
 }
 
 input, select, textarea {
   width: 100%;
-  padding: 12px;
-  margin-bottom: 14px;
-  border-radius: 10px;
-  border: 1px solid #cbd5f5;
+  padding: 14px 16px;
+  margin-bottom: 16px;
+  border-radius: 12px;
+  border: 2px solid #e2e8f0;
   font-size: 1rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.1);
 }
 
 button.submit {
   width: 100%;
-  padding: 14px;
+  padding: 16px;
   background: var(--primary);
   color: white;
   border: none;
   border-radius: 30px;
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight: bold;
   cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+button.submit:hover {
+  background: #1e40af;
+  transform: translateY(-2px);
 }
 
 /* FOOTER */
@@ -146,8 +327,31 @@ footer {
   background: #0f172a;
   color: #cbd5f5;
   text-align: center;
-  padding: 28px 15px;
-  font-size: 0.85rem;
+  padding: 35px 20px;
+  font-size: 0.9rem;
+}
+
+footer a {
+  color: var(--secondary);
+  text-decoration: none;
+}
+
+/* MOBILE NAV */
+@media (max-width: 767px) {
+  .header-content {
+    flex-direction: column;
+    gap: 12px;
+  }
+  nav {
+    justify-content: center;
+  }
+  nav a {
+    padding: 6px 10px;
+    font-size: 0.85rem;
+  }
+  .hero h1 {
+    font-size: 2rem;
+  }
 }
 </style>
 </head>
@@ -155,8 +359,23 @@ footer {
 <body>
 
 <header>
-  <strong>American University of Mongolia</strong>
+  <div class="header-content">
+    <span class="header-brand">American University of Mongolia</span>
+    <nav>
+      <a href="#courses">Courses</a>
+      <a href="#benefits">Benefits</a>
+      <a href="#workshops">Workshops</a>
+      <a href="#scholarship">Scholarship</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#apply" class="nav-cta">Apply Now</a>
+    </nav>
+  </div>
 </header>
+
+<!-- LOGO -->
+<section class="logo-section">
+  <img src="aum-logo.png" alt="American University of Mongolia Logo">
+</section>
 
 <!-- HERO -->
 <section class="hero">
@@ -170,7 +389,7 @@ footer {
 </section>
 
 <!-- COURSES -->
-<section class="section">
+<section class="section" id="courses">
   <h2>Courses Offered</h2>
   <div class="grid">
     <div class="card">
@@ -198,21 +417,21 @@ footer {
 </section>
 
 <!-- BENEFITS -->
-<section class="section">
+<section class="section" id="benefits">
   <h2>Program Benefits</h2>
-  <div class="grid">
-    <div class="card">University Preparation Workshops</div>
-    <div class="card">Campus Access & Student Experience</div>
-    <div class="card">Easier Admission to AUM</div>
-    <div class="card">AUM Faculty Recommendation Letter</div>
-    <div class="card">Certificate of Completion</div>
+  <div class="benefits-grid">
+    <div class="benefit-card">University Preparation Workshops</div>
+    <div class="benefit-card">Campus Access & Student Experience</div>
+    <div class="benefit-card">Easier Admission to AUM</div>
+    <div class="benefit-card">AUM Faculty Recommendation Letter</div>
+    <div class="benefit-card">Certificate of Completion</div>
   </div>
 </section>
 
 <!-- WORKSHOPS -->
-<section class="section">
+<section class="section" id="workshops">
   <h2>University Preparation Workshops</h2>
-  <div class="card">
+  <div class="info-card">
     <ul>
       <li>How to choose a major</li>
       <li>How to write a strong personal statement</li>
@@ -224,9 +443,9 @@ footer {
 </section>
 
 <!-- CAMPUS -->
-<section class="section">
+<section class="section" id="campus">
   <h2>Campus Access & Student Experience</h2>
-  <div class="card">
+  <div class="info-card">
     <ul>
       <li>Access to AUM library</li>
       <li>Access to AUM study rooms</li>
@@ -236,9 +455,9 @@ footer {
 </section>
 
 <!-- SCHOLARSHIP -->
-<section class="section">
+<section class="section" id="scholarship">
   <h2>Online Enrollment Exam & Scholarship</h2>
-  <div class="card">
+  <div class="info-card">
     <p>
       All applicants will take an <strong>online enrollment exam</strong> that evaluates
       <strong>English and Mathematics</strong> skills to ensure readiness for university-level study.
@@ -251,7 +470,7 @@ footer {
 </section>
 
 <!-- PRICING -->
-<section class="section">
+<section class="section" id="pricing">
   <h2>Program Fees</h2>
   <div class="price-box">
     <p><strong>1,500,000 MNT per course</strong></p>
