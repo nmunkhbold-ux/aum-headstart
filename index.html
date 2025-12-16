@@ -13,13 +13,18 @@
 
 <style>
 :root {
-  --primary: #1e3a8a;
-  --secondary: #facc15;
-  --bg: #f8fafc;
-  --text: #1f2937;
+  --primary: #0066cc;
+  --secondary: #ffb800;
+  --bg: #ffffff;
+  --text: #1a1a2e;
+  --accent: #003366;
 }
 
 * { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+}
 
 body {
   margin: 0;
@@ -31,19 +36,110 @@ body {
 
 /* HEADER */
 header {
-  background: #0f172a;
+  background: #003366;
   color: white;
   padding: 14px 18px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+}
+
+header strong {
+  font-size: 1.1rem;
+}
+
+/* NAVIGATION */
+nav {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  transition: background 0.2s;
+}
+
+nav a:hover {
+  background: rgba(255,255,255,0.15);
+}
+
+nav a.nav-cta {
+  background: var(--secondary);
+  color: #1a1a2e;
+  font-weight: bold;
+}
+
+nav a.nav-cta:hover {
+  background: #e6a600;
+}
+
+/* Mobile menu toggle */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 5px;
+}
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #003366;
+    flex-direction: column;
+    padding: 15px;
+    gap: 5px;
+    display: none;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  }
+
+  nav.active {
+    display: flex;
+  }
+
+  nav a {
+    width: 100%;
+    text-align: center;
+    padding: 12px;
+  }
+}
+
+/* LOGO SECTION */
+.logo-section {
+  background: #ffffff;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.logo-section img {
+  max-width: 320px;
+  width: 100%;
+  height: auto;
 }
 
 /* HERO */
 .hero {
-  padding: 90px 20px;
+  padding: 70px 20px;
   text-align: center;
-  background: linear-gradient(135deg, #0f172a, #1e3a8a);
+  background: linear-gradient(135deg, #003366, #0066cc);
   color: white;
 }
 
@@ -59,13 +155,14 @@ header {
 
 .cta {
   background: var(--secondary);
-  color: black;
+  color: #1a1a2e;
   padding: 14px 28px;
   border-radius: 30px;
   text-decoration: none;
   font-weight: bold;
   display: inline-block;
   margin-top: 25px;
+  box-shadow: 0 4px 15px rgba(255, 184, 0, 0.4);
 }
 
 /* SECTIONS */
@@ -73,12 +170,42 @@ header {
   padding: 65px 18px;
   max-width: 1100px;
   margin: auto;
+  scroll-margin-top: 80px;
 }
 
 .section h2 {
   text-align: center;
   margin-bottom: 35px;
   font-size: 1.9rem;
+  color: #003366;
+  position: relative;
+  padding-bottom: 15px;
+}
+
+.section h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  background: var(--secondary);
+  border-radius: 2px;
+}
+
+/* Alternating section backgrounds */
+.section:nth-of-type(even) {
+  background: #f8fafc;
+  max-width: 100%;
+  padding-left: 18px;
+  padding-right: 18px;
+}
+
+.section:nth-of-type(even) > * {
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* GRID */
@@ -97,15 +224,56 @@ header {
   background: white;
   padding: 26px;
   border-radius: 16px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  border-left: 4px solid #0066cc;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+}
+
+/* Benefit cards - icon style */
+.benefit-card {
+  background: white;
+  padding: 22px 26px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-weight: 500;
+  transition: transform 0.2s, box-shadow 0.2s;
+  border-left: none;
+}
+
+.benefit-card::before {
+  content: '\2713';
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+  background: linear-gradient(135deg, #0066cc, #003366);
+  color: white;
+  border-radius: 50%;
+  font-weight: bold;
+}
+
+.benefit-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.12);
 }
 
 /* PRICING */
 .price-box {
-  background: #eef2ff;
+  background: linear-gradient(135deg, #e6f0ff, #fff5e6);
   border-radius: 20px;
   padding: 35px 25px;
   text-align: center;
+  border: 2px solid #0066cc;
 }
 
 .price {
@@ -139,15 +307,69 @@ button.submit {
   font-size: 1rem;
   font-weight: bold;
   cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+
+button.submit:hover {
+  background: #0052a3;
+  transform: translateY(-2px);
 }
 
 /* FOOTER */
 footer {
-  background: #0f172a;
-  color: #cbd5f5;
+  background: #003366;
+  color: #e6f0ff;
   text-align: center;
-  padding: 28px 15px;
-  font-size: 0.85rem;
+  padding: 35px 15px;
+  font-size: 0.9rem;
+}
+
+.footer-nav {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.footer-nav a {
+  color: #e6f0ff;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-nav a:hover {
+  color: var(--secondary);
+}
+
+/* Back to top button */
+.back-to-top {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  width: 50px;
+  height: 50px;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.5rem;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s, visibility 0.3s, transform 0.2s;
+  z-index: 999;
+}
+
+.back-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.back-to-top:hover {
+  transform: translateY(-3px);
+  background: #0052a3;
 }
 </style>
 </head>
@@ -156,7 +378,20 @@ footer {
 
 <header>
   <strong>American University of Mongolia</strong>
+  <button class="menu-toggle" onclick="document.querySelector('nav').classList.toggle('active')" aria-label="Toggle menu">&#9776;</button>
+  <nav>
+    <a href="#courses">Courses</a>
+    <a href="#benefits">Benefits</a>
+    <a href="#workshops">Workshops</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#apply" class="nav-cta">Apply Now</a>
+  </nav>
 </header>
+
+<!-- LOGO -->
+<section class="logo-section">
+  <img src="aum-logo.png" alt="AUM Logo - American University of Mongolia">
+</section>
 
 <!-- HERO -->
 <section class="hero">
@@ -170,7 +405,7 @@ footer {
 </section>
 
 <!-- COURSES -->
-<section class="section">
+<section class="section" id="courses">
   <h2>Courses Offered</h2>
   <div class="grid">
     <div class="card">
@@ -198,19 +433,19 @@ footer {
 </section>
 
 <!-- BENEFITS -->
-<section class="section">
+<section class="section" id="benefits">
   <h2>Program Benefits</h2>
   <div class="grid">
-    <div class="card">University Preparation Workshops</div>
-    <div class="card">Campus Access & Student Experience</div>
-    <div class="card">Easier Admission to AUM</div>
-    <div class="card">AUM Faculty Recommendation Letter</div>
-    <div class="card">Certificate of Completion</div>
+    <div class="benefit-card">University Preparation Workshops</div>
+    <div class="benefit-card">Campus Access & Student Experience</div>
+    <div class="benefit-card">Easier Admission to AUM</div>
+    <div class="benefit-card">AUM Faculty Recommendation Letter</div>
+    <div class="benefit-card">Certificate of Completion</div>
   </div>
 </section>
 
 <!-- WORKSHOPS -->
-<section class="section">
+<section class="section" id="workshops">
   <h2>University Preparation Workshops</h2>
   <div class="card">
     <ul>
@@ -251,7 +486,7 @@ footer {
 </section>
 
 <!-- PRICING -->
-<section class="section">
+<section class="section" id="pricing">
   <h2>Program Fees</h2>
   <div class="price-box">
     <p><strong>1,500,000 MNT per course</strong></p>
@@ -283,9 +518,38 @@ footer {
 </section>
 
 <footer>
-  © 2025 American University of Mongolia · Head Start Program<br>
-  📞 9670 0510
+  <div class="footer-nav">
+    <a href="#courses">Courses</a>
+    <a href="#benefits">Benefits</a>
+    <a href="#workshops">Workshops</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#apply">Apply</a>
+  </div>
+  <p>© 2025 American University of Mongolia · Head Start Program</p>
+  <p>Tel: 9670 0510</p>
 </footer>
+
+<!-- Back to Top Button -->
+<button class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" aria-label="Back to top">&#8593;</button>
+
+<script>
+// Back to top button visibility
+const backToTop = document.querySelector('.back-to-top');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 400) {
+    backToTop.classList.add('visible');
+  } else {
+    backToTop.classList.remove('visible');
+  }
+});
+
+// Close mobile menu when clicking a nav link
+document.querySelectorAll('nav a').forEach(link => {
+  link.addEventListener('click', () => {
+    document.querySelector('nav').classList.remove('active');
+  });
+});
+</script>
 
 <!-- STRUCTURED DATA -->
 <script type="application/ld+json">
