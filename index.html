@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AUM Head Start Program</title>
 
 <style>
@@ -13,99 +13,96 @@
   --text: #1f2937;
 }
 
-* {
-  box-sizing: border-box;
-}
-
 body {
-  margin: 0;
   font-family: "Segoe UI", Arial, sans-serif;
+  margin: 0;
   background: var(--bg);
   color: var(--text);
-  line-height: 1.6;
 }
 
-/* HERO */
 .hero {
   background: linear-gradient(135deg, #0f172a, var(--primary));
   color: white;
-  padding: 90px 20px;
+  padding: 80px 30px;
   text-align: center;
 }
 
 .hero h1 {
-  font-size: 2.6rem;
+  font-size: 2.8rem;
   margin-bottom: 10px;
 }
 
 .hero p {
-  max-width: 700px;
-  margin: 0 auto 25px;
+  max-width: 720px;
+  margin: 15px auto;
   font-size: 1.15rem;
 }
 
 .cta {
-  background: var(--secondary);
-  color: #000;
-  padding: 14px 30px;
-  border-radius: 30px;
-  text-decoration: none;
-  font-weight: bold;
   display: inline-block;
+  margin-top: 30px;
+  padding: 15px 35px;
+  background: var(--secondary);
+  color: #1f2937;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: 8px;
 }
 
-/* SECTIONS */
 .section {
-  padding: 70px 20px;
   max-width: 1100px;
   margin: auto;
+  padding: 70px 30px;
 }
 
 .section h2 {
   text-align: center;
+  margin-bottom: 50px;
   font-size: 2rem;
-  margin-bottom: 40px;
 }
 
-/* GRID */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 25px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
 }
 
 .card {
   background: white;
-  padding: 25px;
+  padding: 30px;
   border-radius: 14px;
   box-shadow: 0 10px 25px rgba(0,0,0,0.06);
 }
 
-/* LIST */
+.card h3 {
+  margin-top: 0;
+  color: var(--primary);
+}
+
+.highlight {
+  background: #eef2ff;
+  border-left: 8px solid var(--primary);
+}
+
 ul {
   padding-left: 18px;
 }
 
-/* PRICE */
-.price-box {
-  text-align: center;
-  background: #eef2ff;
-  padding: 40px 20px;
-  border-radius: 16px;
+.badge {
+  display: inline-block;
+  background: var(--primary);
+  color: white;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  margin-bottom: 15px;
 }
 
-.price {
-  font-size: 2.4rem;
-  font-weight: bold;
-  margin: 15px 0;
-}
-
-/* FOOTER */
-footer {
+.footer {
   background: #0f172a;
-  color: #cbd5f5;
+  color: #c7d2fe;
   text-align: center;
-  padding: 25px 15px;
+  padding: 35px;
   font-size: 0.9rem;
 }
 </style>
@@ -113,79 +110,110 @@ footer {
 
 <body>
 
-<!-- HERO -->
-<section class="hero">
-  <h1>AUM Head Start Program</h1>
+<div class="hero">
+  <span class="badge">AUM UNIVERSITY PREP PROGRAM</span>
+  <h1>Head Start Program</h1>
   <p>
-    Get a real university experience while still in high school.  
-    Study at American University of Mongolia, earn credits, and prepare for university life.
+    A 10–12 week university preparation program that allows high school students
+    to earn real university credits and experience life at the American University of Mongolia.
   </p>
   <a href="#apply" class="cta">Apply Now</a>
-</section>
+</div>
 
-<!-- ABOUT -->
-<section class="section">
-  <h2>What is Head Start?</h2>
+<div class="section">
+  <h2>What is the Head Start Program?</h2>
+  <p style="max-width:850px; margin:auto; text-align:center; font-size:1.05rem;">
+    The Head Start Program is designed for Grade 11–12 and gap year students who want
+    to prepare for university early. Students take AUM courses, earn transferable credits,
+    and build strong academic and application skills before entering university.
+  </p>
+</div>
+
+<div class="section highlight">
+  <h2>Who Can Apply?</h2>
+  <div class="grid">
+    <div class="card">🎓 Grade 11–12 high school students</div>
+    <div class="card">📘 Gap year students</div>
+    <div class="card">📊 Minimum GPA: 80%</div>
+    <div class="card">🌍 English level: B1+</div>
+  </div>
+</div>
+
+<div class="section">
+  <h2>What You Will Get</h2>
   <div class="grid">
     <div class="card">
-      <h3>University Credits</h3>
-      <p>
-        Earn university credits that can be transferred to AUM and partner universities.
-      </p>
+      <h3>University-Level Courses</h3>
+      <p>Study real AUM courses taught by AUM faculty members.</p>
     </div>
     <div class="card">
-      <h3>Early Advantage</h3>
-      <p>
-        Experience university-level courses before graduating high school.
-      </p>
+      <h3>Transferable Credits</h3>
+      <p>Earn credits that can be used at AUM and potentially transferred to other universities.</p>
     </div>
     <div class="card">
-      <h3>Smarter Investment</h3>
-      <p>
-        Save time and reduce future university tuition costs.
-      </p>
+      <h3>University Prep Workshops</h3>
+      <p>Learn how to choose a major, write personal statements, and manage university studies.</p>
+    </div>
+    <div class="card">
+      <h3>Campus Experience</h3>
+      <p>Library access, study rooms, and the chance to sit in a real university class.</p>
     </div>
   </div>
-</section>
+</div>
 
-<!-- ELIGIBILITY -->
-<section class="section">
-  <h2>Who Can Apply?</h2>
-  <div class="card">
-    <ul>
-      <li>Grade 11–12 students</li>
-      <li>Gap year students</li>
-      <li>Minimum GPA: 80%</li>
-      <li>English level: B1 or higher</li>
-    </ul>
+<div class="section highlight">
+  <h2>Why Head Start Matters</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>For Students</h3>
+      <ul>
+        <li>Save time before university</li>
+        <li>Reduce total tuition costs</li>
+        <li>Gain confidence in academic English</li>
+        <li>Strengthen university applications</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Additional Benefits</h3>
+      <ul>
+        <li>Certificate of Completion</li>
+        <li>Eligibility for AUM recommendation letter</li>
+        <li>Early exposure to university expectations</li>
+      </ul>
+    </div>
   </div>
-</section>
+</div>
 
-<!-- PROGRAM DETAILS -->
-<section class="section">
-  <h2>Program Details</h2>
-  <div class="price-box">
-    <p>10-week intensive program</p>
-    <div class="price">3,000,000 MNT</div>
-    <p>Includes 3 university-level courses (bundle only)</p>
+<div class="section">
+  <h2>Pricing Options</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>Per Course</h3>
+      <p style="font-size:1.4rem;"><strong>1.5 million MNT</strong></p>
+      <p>Best for students who want to take one course.</p>
+    </div>
+    <div class="card">
+      <h3>Full Program Package</h3>
+      <p style="font-size:1.4rem;"><strong>3 million MNT</strong></p>
+      <p>Includes 3 courses, workshops, and full campus experience.</p>
+    </div>
   </div>
-</section>
+</div>
 
-<!-- APPLY -->
-<section class="section" id="apply">
-  <h2>Get Started</h2>
-  <div class="card" style="text-align:center">
-    <p>
-      Enrollment dates will be announced soon.  
-      For more information, please contact us.
-    </p>
-    <p><strong>📞 Phone:</strong> 9670 0510</p>
-  </div>
-</section>
+<div id="apply" class="section highlight">
+  <h2>Apply Now</h2>
+  <p style="text-align:center;">
+    Limited seats available. Early application is recommended.
+  </p>
+  <p style="text-align:center;">
+    Email: admissions@aum.edu.mn<br>
+    Phone: +976 XXXXXXXX
+  </p>
+</div>
 
-<footer>
-  © 2025 American University of Mongolia — Head Start Program
-</footer>
+<div class="footer">
+  © American University of Mongolia — Head Start Program
+</div>
 
 </body>
 </html>
