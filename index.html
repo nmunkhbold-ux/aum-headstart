@@ -1,20 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="mn">
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Head Start Program | American University of Mongolia</title>
-<meta name="description" content="The AUM Head Start Program prepares high school students in Mongolia for university through real courses, academic workshops, campus experience, and merit-based scholarships.">
+<title>Head Start хөтөлбөр | American University of Mongolia</title>
+<meta name="description" content="AUM-ийн Head Start хөтөлбөр нь ахлах ангийн сурагчдыг их сургуульд бэлтгэхэд чиглэсэн хичээл, академик зөвлөгөө, кампусын орчин, тэтгэлгийн боломжийг олгодог.">
 <style>
 :root {
-  --primary: #1e3a8a;
-  --primary-light: #3b82f6;
-  --primary-dark: #1e293b;
-  --secondary: #facc15;
+  --primary: #1e3a5f;
+  --primary-light: #2d5a8a;
+  --primary-dark: #152943;
+  --secondary: #d4a944;
   --accent: #10b981;
-  --bg: #f8fafc;
-  --bg-alt: #f1f5f9;
-  --border: #e2e8f0;
+  --bg: #f8f9fb;
+  --bg-alt: #f1f3f7;
+  --border: #dde2e9;
   --text: #1f2937;
   --text-muted: #64748b;
   --radius-sm: 8px;
@@ -33,6 +33,20 @@ body {
   background: white;
   color: var(--text);
   line-height: 1.7;
+}
+
+/* LOGO SECTION */
+.logo-section {
+  background: white;
+  padding: 40px 20px;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+}
+
+.logo-section img {
+  max-width: 400px;
+  width: 100%;
+  height: auto;
 }
 
 /* HEADER */
@@ -97,11 +111,28 @@ nav a.nav-cta:hover {
   box-shadow: var(--shadow-md);
 }
 
+#langToggle {
+  margin-left: 8px;
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: white;
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--primary);
+  transition: all 0.2s ease;
+}
+
+#langToggle:hover {
+  background: var(--bg);
+  border-color: var(--primary);
+}
+
 /* HERO */
 .hero {
-  background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
   color: white;
-  padding: 120px 20px;
+  padding: 100px 20px;
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -115,7 +146,7 @@ nav a.nav-cta:hover {
   right: 0;
   bottom: 0;
   background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="1" fill="white" opacity="0.1"/></svg>');
-  opacity: 0.4;
+  opacity: 0.3;
 }
 
 .hero-content {
@@ -154,7 +185,7 @@ nav a.nav-cta:hover {
   display: inline-block;
   padding: 16px 40px;
   background: var(--secondary);
-  color: #0f172a;
+  color: var(--primary-dark);
   text-decoration: none;
   font-weight: 700;
   border-radius: var(--radius-md);
@@ -166,6 +197,7 @@ nav a.nav-cta:hover {
 .cta:hover {
   transform: translateY(-2px);
   box-shadow: var(--shadow-lg);
+  background: #e0b655;
 }
 
 /* STATS BAR */
@@ -242,7 +274,7 @@ nav a.nav-cta:hover {
 .card:hover {
   transform: translateY(-4px);
   box-shadow: var(--shadow-lg);
-  border-color: var(--primary-light);
+  border-color: var(--secondary);
 }
 
 .card-icon {
@@ -288,7 +320,7 @@ nav a.nav-cta:hover {
 }
 
 .benefit-card:hover {
-  border-color: var(--primary);
+  border-color: var(--secondary);
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);
 }
@@ -476,179 +508,218 @@ footer p {
 
 /* MOBILE */
 @media (max-width: 767px) {
+  .logo-section {
+    padding: 20px 16px;
+  }
+  
+  .logo-section img {
+    max-width: 240px;
+  }
+  
   .header-content { 
     flex-direction: column; 
-    gap: 12px; 
-    padding: 12px 16px;
+    gap: 8px; 
+    padding: 10px 12px;
   }
   
   .header-brand {
-    font-size: 1rem;
+    font-size: 0.9rem;
     text-align: center;
+    line-height: 1.3;
   }
   
   nav { 
     flex-wrap: wrap; 
     justify-content: center;
-    gap: 6px;
+    gap: 4px;
+    width: 100%;
   }
   
   nav a {
-    padding: 8px 12px;
-    font-size: 0.85rem;
+    padding: 6px 10px;
+    font-size: 0.8rem;
   }
   
   nav a.nav-cta {
-    padding: 8px 20px;
+    padding: 6px 16px;
+    width: 100%;
+    text-align: center;
+    margin-top: 4px;
+  }
+  
+  #langToggle {
+    padding: 6px 10px;
+    font-size: 0.8rem;
+    width: 100%;
+    margin-left: 0;
+    margin-top: 4px;
   }
   
   .hero { 
-    padding: 60px 20px; 
+    padding: 50px 16px; 
   }
   
   .hero-badge {
-    font-size: 0.8rem;
-    padding: 6px 16px;
+    font-size: 0.75rem;
+    padding: 5px 14px;
   }
   
   .hero h1 { 
-    font-size: 1.8rem;
-    margin-bottom: 16px;
+    font-size: 1.6rem;
+    margin-bottom: 14px;
   }
   
   .hero p { 
-    font-size: 1rem;
-    margin-bottom: 32px;
+    font-size: 0.95rem;
+    margin-bottom: 28px;
+    line-height: 1.5;
   }
   
   .cta {
-    padding: 14px 32px;
-    font-size: 1rem;
+    padding: 12px 28px;
+    font-size: 0.95rem;
+    width: 100%;
+    max-width: 280px;
   }
   
   .stats-bar {
-    padding: 32px 16px;
+    padding: 28px 14px;
   }
   
   .stats-container { 
     grid-template-columns: 1fr; 
-    gap: 20px; 
+    gap: 18px; 
   }
   
   .stat-item h3 {
-    font-size: 2rem;
+    font-size: 1.8rem;
+  }
+  
+  .stat-item p {
+    font-size: 0.85rem;
   }
   
   .section { 
-    padding: 60px 16px; 
+    padding: 50px 14px; 
   }
   
   .section h2 { 
-    font-size: 1.75rem;
-    margin-bottom: 12px;
+    font-size: 1.6rem;
+    margin-bottom: 10px;
   }
   
   .section-subtitle {
-    font-size: 1rem;
-    margin-bottom: 40px;
+    font-size: 0.95rem;
+    margin-bottom: 32px;
+    padding: 0 8px;
   }
   
   .grid {
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 18px;
   }
   
   .card {
-    padding: 32px 24px;
+    padding: 28px 20px;
   }
   
   .card-icon {
-    width: 48px;
-    height: 48px;
-    font-size: 1.5rem;
+    width: 44px;
+    height: 44px;
+    font-size: 1.4rem;
   }
   
   .card h3 {
-    font-size: 1.2rem;
+    font-size: 1.15rem;
+  }
+  
+  .card p {
+    font-size: 0.9rem;
   }
   
   .benefits-grid {
     grid-template-columns: 1fr;
-    gap: 16px;
+    gap: 12px;
   }
   
   .benefit-card {
-    padding: 20px;
-    font-size: 0.95rem;
+    padding: 18px;
+    font-size: 0.9rem;
   }
   
   .schedule-container {
-    padding: 24px 16px;
-    margin: 24px auto;
+    padding: 20px 12px;
+    margin: 20px auto;
+  }
+  
+  .schedule-header {
+    margin-bottom: 20px;
+    padding-bottom: 16px;
   }
   
   .schedule-header p {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
   }
   
   table { 
-    font-size: 0.75rem; 
+    font-size: 0.7rem; 
   }
   
   th, td { 
-    padding: 10px 6px; 
+    padding: 8px 4px; 
   }
   
   th {
-    font-size: 0.7rem;
+    font-size: 0.65rem;
   }
   
   .pricing-table {
-    margin: 24px -16px;
-    padding: 0 16px;
+    margin: 20px -14px;
+    padding: 0 14px;
   }
   
   .pricing-table table {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
   }
   
   .pricing-table th,
   .pricing-table td {
-    padding: 8px 6px;
+    padding: 6px 4px;
   }
   
   .info-card {
-    padding: 32px 24px;
+    padding: 28px 20px;
   }
   
   .info-card li {
-    font-size: 0.95rem;
-    padding-left: 28px;
+    font-size: 0.9rem;
+    padding-left: 26px;
+    margin-bottom: 12px;
   }
   
   .scholarship-box {
-    padding: 32px 24px;
-    margin: 24px auto;
+    padding: 28px 20px;
+    margin: 20px auto;
   }
   
   .scholarship-box h3 {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
   }
   
   .scholarship-box .big-number {
-    font-size: 3rem;
+    font-size: 2.8rem;
   }
   
   .scholarship-box p {
-    font-size: 1rem !important;
+    font-size: 0.95rem !important;
   }
   
   footer {
-    padding: 40px 20px;
+    padding: 36px 16px;
   }
   
   footer p {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
   }
 }
 </style>
@@ -656,141 +727,152 @@ footer p {
 
 <body>
 
+<div class="logo-section">
+  <img src="https://raw.githubusercontent.com/nmunkhbold-ux/aum-headstart/c363b634f08cacf0c6031d779ed816ad29591452/aum-logo.png" alt="American University of Mongolia">
+</div>
+
 <header>
   <div class="header-content">
     <span class="header-brand">American University of Mongolia</span>
     <nav>
-      <a href="#courses">Courses</a>
-      <a href="#benefits">Benefits</a>
-      <a href="#schedule">Schedule</a>
-      <a href="#scholarship">Scholarship</a>
-      <a href="#apply" class="nav-cta">Apply Now</a>
+      <a href="#courses" data-en="Courses" data-mn="Хичээлүүд">Хичээлүүд</a>
+      <a href="#benefits" data-en="Benefits" data-mn="Давуу тал">Давуу тал</a>
+      <a href="#schedule" data-en="Schedule" data-mn="Хуваарь">Хуваарь</a>
+      <a href="#scholarship" data-en="Scholarship" data-mn="Тэтгэлэг">Тэтгэлэг</a>
+      <a href="#apply" class="nav-cta" data-en="Apply Now" data-mn="Одоо бүртгүүлэх">Одоо бүртгүүлэх</a>
+      <button id="langToggle">EN</button>
     </nav>
   </div>
 </header>
 
 <section class="hero">
   <div class="hero-content">
-    <div class="hero-badge">🎓 University Preparation Program</div>
-    <h1>Head Start Program</h1>
-    <p>
-      Build academic readiness, gain real university experience, and strengthen 
-      your university applications before graduation—all while earning credits and scholarships.
+    <div class="hero-badge" data-en="🎓 University Preparation Program" data-mn="🎓 Их сургуульд бэлтгэх хөтөлбөр">🎓 Их сургуульд бэлтгэх хөтөлбөр</div>
+    <h1 data-en="Head Start Program" data-mn="Head Start хөтөлбөр">Head Start хөтөлбөр</h1>
+    <p data-en="Build academic readiness, gain real university experience, and strengthen your university applications before graduation—all while earning credits and scholarships." data-mn="Ахлах сургуулиа төгсөхөөсөө өмнө их сургуульд бэлтгэж, их сургуулийн хичээл судалж, кредит цуглуулан, тэтгэлэг авах боломж.">
+      Ахлах сургуулиа төгсөхөөсөө өмнө их сургуульд бэлтгэж,
+      их сургуулийн хичээл судалж, кредит цуглуулан,
+      тэтгэлэг авах боломж.
     </p>
-    <a href="#apply" class="cta">Start Your Journey</a>
+    <a href="#apply" class="cta" data-en="Start Your Journey" data-mn="Аяллаа эхлүүлэх">Аяллаа эхлүүлэх</a>
   </div>
 </section>
 
+
 <section class="section" id="courses">
-  <h2>Courses Offered</h2>
-  <p class="section-subtitle">University-level courses designed for high school students</p>
+  <h2 data-en="Courses Offered" data-mn="Санал болгож буй хичээлүүд">Санал болгож буй хичээлүүд</h2>
+  <p class="section-subtitle" data-en="University-level courses designed for high school students" data-mn="Ахлах ангийн сурагчдад зориулсан их сургуулийн түвшний хичээлүүд">Ахлах ангийн сурагчдад зориулсан их сургуулийн түвшний хичээлүүд</p>
   <div class="grid">
     <div class="card">
       <div class="card-icon">💼</div>
       <h3>Business Finance</h3>
-      <p>Master financial literacy and core business concepts essential for university success and career readiness.</p>
+      <p data-en="Master financial literacy and core business concepts essential for university success and career readiness." data-mn="Санхүүгийн суурь ойлголт, бизнесийн үндсэн мэдлэгийг эзэмшиж их сургууль болон ирээдүйн мэргэжилд бэлтгэнэ.">Санхүүгийн суурь ойлголт, бизнесийн үндсэн мэдлэгийг эзэмшиж их сургууль болон ирээдүйн мэргэжилд бэлтгэнэ.</p>
     </div>
     <div class="card">
       <div class="card-icon">🗣️</div>
-      <h3>ESL</h3>
-      <p>Build academic English proficiency for university coursework with expert instruction and practical skills.</p>
+      <h3 data-en="ESL" data-mn="ESL (Академик англи хэл)">ESL (Академик англи хэл)</h3>
+      <p data-en="Build academic English proficiency for university coursework with expert instruction and practical skills." data-mn="Их сургуулийн хичээлд шаардлагатай академик англи хэл, бичих, илтгэх чадварыг хөгжүүлнэ.">Их сургуулийн хичээлд шаардлагатай академик англи хэл, бичих, илтгэх чадварыг хөгжүүлнэ.</p>
     </div>
     <div class="card">
       <div class="card-icon">📊</div>
       <h3>Data Science</h3>
-      <p>Explore data analysis foundations and develop logical thinking skills for the modern world.</p>
+      <p data-en="Explore data analysis foundations and develop logical thinking skills for the modern world." data-mn="Өгөгдөлд суурилсан сэтгэлгээ, логик анализын үндсийг эзэмшинэ.">Өгөгдөлд суурилсан сэтгэлгээ, логик анализын үндсийг эзэмшинэ.</p>
     </div>
   </div>
 </section>
 
 <div class="section-alt">
 <section class="section" id="benefits">
-  <h2>Program Benefits</h2>
-  <p class="section-subtitle">Everything you need to succeed at university</p>
+  <h2 data-en="Program Benefits" data-mn="Хөтөлбөрийн давуу талууд">Хөтөлбөрийн давуу талууд</h2>
+  <p class="section-subtitle" data-en="Everything you need to succeed at university" data-mn="Их сургуульд амжилттай суралцахад шаардлагатай бүх зүйл">Их сургуульд амжилттай суралцахад шаардлагатай бүх зүйл</p>
   <div class="benefits-grid">
-    <div class="benefit-card">📚 University Preparation Workshops</div>
-    <div class="benefit-card">🏫 Full Campus Access</div>
-    <div class="benefit-card">✍️ Faculty Recommendation Letter</div>
-    <div class="benefit-card">🎖️ Certificate of Completion</div>
-    <div class="benefit-card">🚀 Stronger Applications</div>
+    <div class="benefit-card" data-en="🔄 Transferable University Credits" data-mn="🔄 Шилжих боломжтой их сургуулийн кредит">🔄 Шилжих боломжтой их сургуулийн кредит</div>
+    <div class="benefit-card" data-en="🕒 Time & Cost Savings" data-mn="🕒 Цаг, зардал хэмнэлт">🕒 Цаг, зардал хэмнэлт</div>
+    <div class="benefit-card" data-en="🌍 Study Abroad Preparation" data-mn="🌍 Гадаадад суралцах бэлтгэл">🌍 Гадаадад суралцах бэлтгэл</div>
+    <div class="benefit-card" data-en="📚 University Preparation Workshops" data-mn="📚 Их сургуульд бэлтгэх сургалт, зөвлөгөө">📚 Их сургуульд бэлтгэх сургалт, зөвлөгөө</div>
+    <div class="benefit-card" data-en="🏫 Full Campus Access" data-mn="🏫 AUM кампусын бүрэн ашиглалт">🏫 AUM кампусын бүрэн ашиглалт</div>
+    <div class="benefit-card" data-en="✍️ Faculty Recommendation Letter" data-mn="✍️ Багшийн тодорхойлох захидал">✍️ Багшийн тодорхойлох захидал</div>
+    <div class="benefit-card" data-en="🎖️ Certificate of Completion" data-mn="🎖️ Төгсөлтийн сертификат">🎖️ Төгсөлтийн сертификат</div>
+    <div class="benefit-card" data-en="🚀 Stronger Applications" data-mn="🚀 Их сургуулийн өргөдөлд давуу тал">🚀 Их сургуулийн өргөдөлд давуу тал</div>
   </div>
 </section>
 </div>
 
 <section class="section" id="schedule">
-  <h2>Spring 2025 Weekly Schedule</h2>
+  <h2 data-en="Weekly Schedule" data-mn="Xуваарь"> Xуваарь</h2>
   <div class="schedule-container">
     <div class="schedule-header">
-      <p><strong>Time:</strong> 15:00 – 16:30</p>
-      <p><strong>Classroom:</strong> 204</p>
+      <p><strong data-en="Time:" data-mn="Цаг:">Цаг:</strong> 15:00 – 16:30</p>
+      <p><strong data-en="Classroom:" data-mn="Анги:">Анги:</strong> 204</p>
     </div>
     <table>
       <tr>
-        <th>Monday</th>
-        <th>Tuesday</th>
-        <th>Wednesday</th>
-        <th>Thursday</th>
-        <th>Friday</th>
+        <th data-en="Monday" data-mn="Даваа">Даваа</th>
+        <th data-en="Tuesday" data-mn="Мягмар">Мягмар</th>
+        <th data-en="Wednesday" data-mn="Лхагва">Лхагва</th>
+        <th data-en="Thursday" data-mn="Пүрэв">Пүрэв</th>
+        <th data-en="Friday" data-mn="Баасан">Баасан</th>
       </tr>
       <tr>
         <td>Business Finance</td>
         <td>Marketing / Data Science</td>
         <td>ESL</td>
         <td>—</td>
-        <td>Self-Development & Workshops</td>
+        <td data-en="Self-Development & Workshops" data-mn="Өөрийгөө хөгжүүлэх & семинар">Өөрийгөө хөгжүүлэх & семинар</td>
       </tr>
     </table>
   </div>
 </section>
 
 <section class="section" id="scholarship">
-  <h2>Merit-Based Scholarship</h2>
+  <h2 data-en="Merit-Based Scholarship" data-mn="Чадварт суурилсан тэтгэлэг">Чадварт суурилсан тэтгэлэг</h2>
   <div class="scholarship-box">
-    <h3>Pass the Enrollment Exam</h3>
+    <h3 data-en="Pass the Enrollment Exam" data-mn="Элсэлтийн шалгалтад тэнцвэл">Элсэлтийн шалгалтад тэнцвэл</h3>
     <div class="big-number">50%</div>
-    <p style="font-size: 1.2rem; margin-top: 20px;">
-      All students who pass the online placement exam automatically receive a 50% scholarship on all courses.
+    <p style="font-size: 1.2rem; margin-top: 20px;" data-en="All students who pass the online placement exam automatically receive a 50% scholarship on all courses." data-mn="Онлайн англи болон математикийн шалгалтад тэнцсэн бүх сурагч бүх хичээлдээ автоматаар 50% тэтгэлэг авна.">
+      Онлайн англи болон математикийн шалгалтад тэнцсэн бүх сурагч
+      бүх хичээлдээ автоматаар 50% тэтгэлэг авна.
     </p>
   </div>
 </section>
 
 <section class="section-alt">
 <section class="section">
-  <h2>Course Options & Pricing</h2>
-  <p class="section-subtitle">Choose the path that fits your goals</p>
+  <h2 data-en="Course Options & Pricing" data-mn="Хичээлийн сонголт ба үнэ">Хичээлийн сонголт ба үнэ</h2>
+  <p class="section-subtitle" data-en="Choose the path that fits your goals" data-mn="Өөрийн зорилгодоо тохирсон замаа сонгоорой">Өөрийн зорилгодоо тохирсон замаа сонгоорой</p>
   <div class="pricing-table">
     <table>
       <tr>
-        <th>Option</th>
-        <th>Campus Access</th>
-        <th>Workshops</th>
-        <th>Recommendation</th>
-        <th>Full Price</th>
-        <th>With Scholarship</th>
+        <th data-en="Option" data-mn="Сонголт">Сонголт</th>
+        <th data-en="Campus Access" data-mn="Кампус нэвтрэх">Кампус нэвтрэх</th>
+        <th data-en="Workshops" data-mn="Семинарууд">Семинарууд</th>
+        <th data-en="Recommendation" data-mn="Зөвлөмж">Зөвлөмж</th>
+        <th data-en="Full Price" data-mn="Бүтэн үнэ">Бүтэн үнэ</th>
+        <th data-en="With Scholarship" data-mn="Тэтгэлэгтэй">Тэтгэлэгтэй</th>
       </tr>
       <tr>
-        <td>1 Course</td>
+        <td data-en="1 Course" data-mn="1 хичээл">1 хичээл</td>
         <td class="check">✔</td>
         <td>—</td>
         <td>—</td>
-        <td>1,500,000 MNT</td>
-        <td><strong>750,000 MNT</strong></td>
+        <td>1,500,000 ₮</td>
+        <td><strong>750,000 ₮</strong></td>
       </tr>
       <tr>
-        <td>2 Courses</td>
+        <td data-en="2 Courses" data-mn="2 хичээл">2 хичээл</td>
         <td class="check">✔</td>
         <td class="check">✔</td>
         <td>—</td>
-        <td>3,000,000 MNT</td>
-        <td><strong>1,500,000 MNT</strong></td>
+        <td>3,000,000 ₮</td>
+        <td><strong>1,500,000 ₮</strong></td>
       </tr>
       <tr>
-        <td><strong>3-Course Bundle</strong></td>
+        <td data-en="3-Course Bundle" data-mn="3 хичээлийн багц"><strong>3 хичээлийн багц</strong></td>
         <td class="check">✔</td>
         <td class="check">✔</td>
         <td class="check">✔</td>
-        <td>4,500,000 MNT</td>
-        <td><strong>2,250,000 MNT</strong></td>
+        <td>4,500,000 ₮</td>
+        <td><strong>2,250,000 ₮</strong></td>
       </tr>
     </table>
   </div>
@@ -798,59 +880,70 @@ footer p {
 </section>
 
 <section class="section">
-  <h2>University Preparation Workshops</h2>
-  <p class="section-subtitle">Essential guidance for your university journey</p>
+  <h2 data-en="University Preparation Workshops" data-mn="Их сургуульд бэлтгэх семинарууд">Их сургуульд бэлтгэх семинарууд</h2>
+  <p class="section-subtitle" data-en="Essential guidance for your university journey" data-mn="Их сургуулийн аяллалд зайлшгүй шаардлагатай зөвлөгөө">Их сургуулийн аяллалд зайлшгүй шаардлагатай зөвлөгөө</p>
   <div class="info-card">
     <ul>
-      <li>Choosing the right major for your interests and goals</li>
-      <li>Personal statement writing and essay workshops</li>
-      <li>Study skills, time management, and academic success</li>
-      <li>Applying to universities abroad and scholarship opportunities</li>
+      <li data-en="Choosing the right major for your interests and goals" data-mn="Өөрийн сонирхол, зорилгод тохирсон мэргэжил сонгох">Өөрийн сонирхол, зорилгод тохирсон мэргэжил сонгох</li>
+      <li data-en="Personal statement writing and essay workshops" data-mn="Хувийн мэдэгдэл бичих болон эссэ бичих семинарууд">Хувийн мэдэгдэл бичих болон эссэ бичих семинарууд</li>
+      <li data-en="Study skills, time management, and academic success" data-mn="Суралцах арга ухаан, цаг хуваарилалт, академик амжилт">Суралцах арга ухаан, цаг хуваарилалт, академик амжилт</li>
+      <li data-en="Applying to universities abroad and scholarship opportunities" data-mn="Гадаадын их сургуульд элсэх болон тэтгэлгийн боломжууд">Гадаадын их сургуульд элсэх болон тэтгэлгийн боломжууд</li>
     </ul>
   </div>
 </section>
 
 <section class="section-alt">
 <section class="section">
-  <h2>Admission Process</h2>
-  <p class="section-subtitle">Four simple steps to get started</p>
+  <h2 data-en="Admission Process" data-mn="Элсэлтийн үйл явц">Элсэлтийн үйл явц</h2>
+  <p class="section-subtitle" data-en="Four simple steps to get started" data-mn="Эхлэхийн тулд дөрвөн энгийн алхам">Эхлэхийн тулд дөрвөн энгийн алхам</p>
   <div class="info-card">
     <ol>
-      <li>Submit the online application form below</li>
-      <li>Take the online English & Math placement exam</li>
-      <li>Receive your scholarship result</li>
-      <li>Complete enrollment and course registration</li>
+      <li data-en="Submit the online application form below" data-mn="Доорх онлайн өргөдлийн маягтыг бөглөнө үү">Доорх онлайн өргөдлийн маягтыг бөглөнө үү</li>
+      <li data-en="Take the online English & Math placement exam" data-mn="Онлайн англи хэл болон математикийн шалгалт өгнө үү">Онлайн англи хэл болон математикийн шалгалт өгнө үү</li>
+      <li data-en="Receive your scholarship result" data-mn="Тэтгэлгийн үр дүнгээ хүлээн авна">Тэтгэлгийн үр дүнгээ хүлээн авна</li>
+      <li data-en="Complete enrollment and course registration" data-mn="Элсэлт болон хичээл бүртгэлээ гүйцэтгэнэ">Элсэлт болон хичээл бүртгэлээ гүйцэтгэнэ</li>
     </ol>
-    <p style="margin-top: 32px; padding-top: 32px; border-top: 2px solid var(--border); font-size: 1.05rem;">
-      <strong>Important:</strong> As a Head Start student, you become part of the AUM family with 
-      priority placement and scholarships already secured through the placement exam.
+    <p style="margin-top: 32px; padding-top: 32px; border-top: 2px solid var(--border); font-size: 1.05rem;" data-en="Important: As a Head Start student, you become part of the AUM family with priority placement and scholarships already secured through the placement exam." data-mn="Чухал: Head Start сурагчийн хувьд та AUM-ийн гэр бүлийн нэг хэсэг болж, элсэлтийн шалгалтаар аль хэдийн авсан давуу эрх болон тэтгэлэгтэй болно.">
+      <strong data-en="Important:" data-mn="Чухал:">Чухал:</strong> <span data-en="As a Head Start student, you become part of the AUM family with priority placement and scholarships already secured through the placement exam." data-mn="Head Start сурагчийн хувьд та AUM-ийн гэр бүлийн нэг хэсэг болж, элсэлтийн шалгалтаар аль хэдийн авсан давуу эрх болон тэтгэлэгтэй болно.">Head Start сурагчийн хувьд та AUM-ийн гэр бүлийн нэг хэсэг болж, элсэлтийн шалгалтаар аль хэдийн авсан давуу эрх болон тэтгэлэгтэй болно.</span>
     </p>
   </div>
 </section>
 </section>
 
 <section class="section" id="apply">
-  <h2>Apply Now</h2>
-  <p class="section-subtitle">Start your university journey today</p>
+  <h2 data-en="Apply Now" data-mn="Одоо бүртгүүлэх">Одоо бүртгүүлэх</h2>
+  <p class="section-subtitle" data-en="Start your university journey today" data-mn="Их сургуулийн аяллаа өнөөдрөөс эхлүүлээрэй">Их сургуулийн аяллаа өнөөдрөөс эхлүүлээрэй</p>
   <div style="max-width: 520px; margin: auto; text-align: center;">
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLScZoPJl6ie5Y5LF0mV4SVFECP0rxYyImJxHM7daTzoAkNnebg/viewform" target="_blank" class="cta" style="display: inline-block; text-decoration: none;">
-      Complete Application Form
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLScZoPJl6ie5Y5LF0mV4SVFECP0rxYyImJxHM7daTzoAkNnebg/viewform" target="_blank" class="cta" data-en="Complete Application Form" data-mn="Өргөдлийн маягт бөглөх">
+      Өргөдлийн маягт бөглөх
     </a>
-    <p style="margin-top: 20px; color: var(--text-muted); font-size: 0.95rem;">
-      Click the button above to fill out the Head Start Program application form
+    <p style="margin-top: 20px; color: var(--text-muted); font-size: 0.95rem;" data-en="Click the button above to fill out the Head Start Program application form" data-mn="Head Start хөтөлбөрийн өргөдлийн маягтыг бөглөхийн тулд дээрх товчийг дарна уу">
+      Head Start хөтөлбөрийн өргөдлийн маягтыг бөглөхийн тулд дээрх товчийг дарна уу
     </p>
   </div>
 </section>
 
 <footer>
   <p style="font-size: 1.1rem; font-weight: 600; margin-bottom: 16px;">
-    American University of Mongolia · Head Start Program
+    American University of Mongolia · <span data-en="Head Start Program" data-mn="Head Start хөтөлбөр">Head Start хөтөлбөр</span>
   </p>
-  <p>Admissions Hotline: 72722626</p>
+  <p><span data-en="Admissions Hotline:" data-mn="Элсэлтийн утас:">Элсэлтийн утас:</span> 7272-2626</p>
   <p style="margin-top: 24px; opacity: 0.7; font-size: 0.9rem;">
-    © 2025 All Rights Reserved
-  </p>
+    
 </footer>
 
+<script>
+let currentLang = 'mn';
+const toggleBtn = document.getElementById('langToggle');
+
+toggleBtn.addEventListener('click', () => {
+  currentLang = currentLang === 'mn' ? 'en' : 'mn';
+  toggleBtn.textContent = currentLang === 'mn' ? 'EN' : 'MN';
+
+  document.querySelectorAll('[data-en]').forEach(el => {
+    el.textContent = currentLang === 'mn' ? el.dataset.mn : el.dataset.en;
+  });
+});
+</script>
 </body>
 </html>
