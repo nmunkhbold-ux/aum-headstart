@@ -82,6 +82,43 @@ nav {
   align-items: center;
 }
 
+.nav-links {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  z-index: 101;
+}
+
+.hamburger span {
+  width: 24px;
+  height: 3px;
+  background: var(--primary);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.hamburger.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -6px);
+}
+
 nav a {
   text-decoration: none;
   color: var(--text-muted);
@@ -414,6 +451,106 @@ tr:hover td {
   font-weight: 700;
 }
 
+.pricing-cards {
+  display: none;
+}
+
+.pricing-card {
+  background: white;
+  border: 2px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  margin-bottom: 16px;
+  box-shadow: var(--shadow-sm);
+}
+
+.pricing-card.featured {
+  border-color: var(--secondary);
+  background: linear-gradient(to bottom, #fffbf0 0%, white 100%);
+}
+
+.pricing-card h3 {
+  color: var(--primary-dark);
+  font-size: 1.3rem;
+  margin-bottom: 16px;
+  font-weight: 700;
+}
+
+.pricing-card .price-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.pricing-card .price-row:last-child {
+  border-bottom: none;
+}
+
+.pricing-card .price-label {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.pricing-card .price-value {
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.pricing-card .price-value.discounted {
+  font-size: 1.2rem;
+  color: var(--accent);
+}
+
+.pricing-card .features {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+
+.pricing-card .feature-badge {
+  background: var(--bg);
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  color: var(--text);
+}
+
+.pricing-card .feature-badge.active {
+  background: var(--accent);
+  color: white;
+}
+
+/* FLOATING CTA BAR */
+.floating-cta {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: white;
+  padding: 12px 16px;
+  box-shadow: 0 -4px 12px rgba(0,0,0,0.15);
+  z-index: 99;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+}
+
+.floating-cta.visible {
+  transform: translateY(0);
+}
+
+.floating-cta .cta {
+  width: 100%;
+  margin: 0;
+  padding: 14px;
+  text-align: center;
+  font-size: 1rem;
+}
+
 /* INFO CARD */
 .info-card {
   max-width: 700px;
@@ -517,42 +654,86 @@ footer p {
   }
   
   .header-content { 
-    flex-direction: column; 
+    flex-direction: row;
+    justify-content: space-between;
     gap: 8px; 
-    padding: 10px 12px;
+    padding: 12px 16px;
   }
   
   .header-brand {
     font-size: 0.9rem;
-    text-align: center;
+    text-align: left;
     line-height: 1.3;
   }
   
-  nav { 
-    flex-wrap: wrap; 
-    justify-content: center;
-    gap: 4px;
-    width: 100%;
+  .hamburger {
+    display: flex;
+  }
+  
+  .nav-links { 
+    position: fixed;
+    top: 0;
+    right: -100%;
+    height: 100vh;
+    width: 70%;
+    max-width: 300px;
+    background: white;
+    flex-direction: column;
+    gap: 0;
+    padding: 80px 20px 20px;
+    box-shadow: -4px 0 12px rgba(0,0,0,0.1);
+    transition: right 0.3s ease;
+    z-index: 100;
+  }
+  
+  .nav-links.active {
+    right: 0;
   }
   
   nav a {
-    padding: 6px 10px;
-    font-size: 0.8rem;
+    padding: 14px 20px;
+    font-size: 1rem;
+    width: 100%;
+    text-align: left;
+    border-radius: 0;
+    border-bottom: 1px solid var(--border);
+    min-height: 44px;
+    display: flex;
+    align-items: center;
   }
   
   nav a.nav-cta {
-    padding: 6px 16px;
+    padding: 14px 20px;
     width: 100%;
     text-align: center;
-    margin-top: 4px;
+    margin-top: 8px;
+    border-radius: var(--radius-md);
+    border-bottom: none;
   }
   
   #langToggle {
-    padding: 6px 10px;
-    font-size: 0.8rem;
+    padding: 12px 20px;
+    font-size: 1rem;
     width: 100%;
     margin-left: 0;
-    margin-top: 4px;
+    margin-top: 8px;
+    min-height: 44px;
+  }
+  
+  /* Overlay */
+  .nav-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 99;
+  }
+  
+  .nav-overlay.active {
+    display: block;
   }
   
   .hero { 
@@ -576,10 +757,14 @@ footer p {
   }
   
   .cta {
-    padding: 12px 28px;
-    font-size: 0.95rem;
+    padding: 14px 28px;
+    font-size: 1rem;
     width: 100%;
-    max-width: 280px;
+    max-width: 320px;
+    min-height: 48px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
   
   .stats-bar {
@@ -600,7 +785,7 @@ footer p {
   }
   
   .section { 
-    padding: 50px 14px; 
+    padding: 50px 14px 70px; 
   }
   
   .section h2 { 
@@ -645,11 +830,16 @@ footer p {
   .benefit-card {
     padding: 18px;
     font-size: 0.9rem;
+    min-height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   
   .schedule-container {
     padding: 20px 12px;
     margin: 20px auto;
+    overflow-x: auto;
   }
   
   .schedule-header {
@@ -662,29 +852,31 @@ footer p {
   }
   
   table { 
-    font-size: 0.7rem; 
+    font-size: 0.7rem;
+    min-width: 500px;
   }
   
   th, td { 
-    padding: 8px 4px; 
+    padding: 10px 6px; 
+    min-height: 44px;
   }
   
   th {
     font-size: 0.65rem;
   }
   
-  .pricing-table {
-    margin: 20px -14px;
-    padding: 0 14px;
-  }
-  
+  /* Card-based pricing for mobile */
   .pricing-table table {
-    font-size: 0.75rem;
+    display: none;
   }
   
-  .pricing-table th,
-  .pricing-table td {
-    padding: 6px 4px;
+  .pricing-cards {
+    display: block;
+    padding: 0 4px;
+  }
+  
+  .pricing-card {
+    margin-bottom: 16px;
   }
   
   .info-card {
@@ -715,11 +907,16 @@ footer p {
   }
   
   footer {
-    padding: 36px 16px;
+    padding: 36px 16px 80px;
   }
   
   footer p {
     font-size: 0.85rem;
+  }
+  
+  /* Show floating CTA on mobile */
+  .floating-cta {
+    display: block;
   }
 }
 </style>
@@ -734,15 +931,23 @@ footer p {
 <header>
   <div class="header-content">
     <span class="header-brand">American University of Mongolia</span>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
     <nav>
-      <a href="#courses" data-en="Courses" data-mn="Хичээлүүд">Хичээлүүд</a>
-      <a href="#benefits" data-en="Benefits" data-mn="Давуу тал">Давуу тал</a>
-      <a href="#schedule" data-en="Schedule" data-mn="Хуваарь">Хуваарь</a>
-      <a href="#scholarship" data-en="Scholarship" data-mn="Тэтгэлэг">Тэтгэлэг</a>
-      <a href="#apply" class="nav-cta" data-en="Apply Now" data-mn="Одоо бүртгүүлэх">Одоо бүртгүүлэх</a>
-      <button id="langToggle">EN</button>
+      <div class="nav-links" id="navLinks">
+        <a href="#courses" data-en="Courses" data-mn="Хичээлүүд">Хичээлүүд</a>
+        <a href="#benefits" data-en="Benefits" data-mn="Давуу тал">Давуу тал</a>
+        <a href="#schedule" data-en="Schedule" data-mn="Хуваарь">Хуваарь</a>
+        <a href="#scholarship" data-en="Scholarship" data-mn="Тэтгэлэг">Тэтгэлэг</a>
+        <a href="#apply" class="nav-cta" data-en="Apply Now" data-mn="Одоо бүртгүүлэх">Одоо бүртгүүлэх</a>
+        <button id="langToggle">EN</button>
+      </div>
     </nav>
   </div>
+  <div class="nav-overlay" id="navOverlay"></div>
 </header>
 
 <section class="hero">
@@ -815,7 +1020,7 @@ footer p {
       </tr>
       <tr>
         <td>Business Finance</td>
-        <td>Marketing / Data Science</td>
+        <td>Data Science</td>
         <td>ESL</td>
         <td>—</td>
         <td data-en="Self-Development & Workshops" data-mn="Өөрийгөө хөгжүүлэх & семинар">Өөрийгөө хөгжүүлэх & семинар</td>
@@ -876,6 +1081,57 @@ footer p {
       </tr>
     </table>
   </div>
+  
+  <!-- Mobile card-based pricing -->
+  <div class="pricing-cards">
+    <div class="pricing-card">
+      <h3 data-en="1 Course" data-mn="1 хичээл">1 хичээл</h3>
+      <div class="price-row">
+        <span class="price-label" data-en="Full Price" data-mn="Бүтэн үнэ">Бүтэн үнэ</span>
+        <span class="price-value">1,500,000 ₮</span>
+      </div>
+      <div class="price-row">
+        <span class="price-label" data-en="With Scholarship" data-mn="Тэтгэлэгтэй">Тэтгэлэгтэй</span>
+        <span class="price-value discounted">750,000 ₮</span>
+      </div>
+      <div class="features">
+        <span class="feature-badge active" data-en="✔ Campus Access" data-mn="✔ Кампус нэвтрэх">✔ Кампус нэвтрэх</span>
+      </div>
+    </div>
+    
+    <div class="pricing-card">
+      <h3 data-en="2 Courses" data-mn="2 хичээл">2 хичээл</h3>
+      <div class="price-row">
+        <span class="price-label" data-en="Full Price" data-mn="Бүтэн үнэ">Бүтэн үнэ</span>
+        <span class="price-value">3,000,000 ₮</span>
+      </div>
+      <div class="price-row">
+        <span class="price-label" data-en="With Scholarship" data-mn="Тэтгэлэгтэй">Тэтгэлэгтэй</span>
+        <span class="price-value discounted">1,500,000 ₮</span>
+      </div>
+      <div class="features">
+        <span class="feature-badge active" data-en="✔ Campus" data-mn="✔ Кампус">✔ Кампус</span>
+        <span class="feature-badge active" data-en="✔ Workshops" data-mn="✔ Семинар">✔ Семинар</span>
+      </div>
+    </div>
+    
+    <div class="pricing-card featured">
+      <h3 data-en="3-Course Bundle ⭐" data-mn="3 хичээлийн багц ⭐">3 хичээлийн багц ⭐</h3>
+      <div class="price-row">
+        <span class="price-label" data-en="Full Price" data-mn="Бүтэн үнэ">Бүтэн үнэ</span>
+        <span class="price-value">4,500,000 ₮</span>
+      </div>
+      <div class="price-row">
+        <span class="price-label" data-en="With Scholarship" data-mn="Тэтгэлэгтэй">Тэтгэлэгтэй</span>
+        <span class="price-value discounted">2,250,000 ₮</span>
+      </div>
+      <div class="features">
+        <span class="feature-badge active" data-en="✔ Campus" data-mn="✔ Кампус">✔ Кампус</span>
+        <span class="feature-badge active" data-en="✔ Workshops" data-mn="✔ Семинар">✔ Семинар</span>
+        <span class="feature-badge active" data-en="✔ Recommendation" data-mn="✔ Зөвлөмж">✔ Зөвлөмж</span>
+      </div>
+    </div>
+  </div>
 </section>
 </section>
 
@@ -929,13 +1185,23 @@ footer p {
   </p>
   <p><span data-en="Admissions Hotline:" data-mn="Элсэлтийн утас:">Элсэлтийн утас:</span> 7272-2626</p>
   <p style="margin-top: 24px; opacity: 0.7; font-size: 0.9rem;">
-    
+   
 </footer>
+
+<!-- Floating CTA Bar for Mobile -->
+<div class="floating-cta" id="floatingCta">
+  <a href="#apply" class="cta" data-en="Apply Now" data-mn="Одоо бүртгүүлэх">Одоо бүртгүүлэх</a>
+</div>
 
 <script>
 let currentLang = 'mn';
 const toggleBtn = document.getElementById('langToggle');
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
+const navOverlay = document.getElementById('navOverlay');
+const floatingCta = document.getElementById('floatingCta');
 
+// Language toggle
 toggleBtn.addEventListener('click', () => {
   currentLang = currentLang === 'mn' ? 'en' : 'mn';
   toggleBtn.textContent = currentLang === 'mn' ? 'EN' : 'MN';
@@ -943,6 +1209,48 @@ toggleBtn.addEventListener('click', () => {
   document.querySelectorAll('[data-en]').forEach(el => {
     el.textContent = currentLang === 'mn' ? el.dataset.mn : el.dataset.en;
   });
+});
+
+// Hamburger menu toggle
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('active');
+  navLinks.classList.toggle('active');
+  navOverlay.classList.toggle('active');
+  document.body.style.overflow = hamburger.classList.contains('active') ? 'hidden' : '';
+});
+
+// Close menu when clicking overlay
+navOverlay.addEventListener('click', () => {
+  hamburger.classList.remove('active');
+  navLinks.classList.remove('active');
+  navOverlay.classList.remove('active');
+  document.body.style.overflow = '';
+});
+
+// Close menu when clicking a link
+document.querySelectorAll('.nav-links a').forEach(link => {
+  link.addEventListener('click', () => {
+    hamburger.classList.remove('active');
+    navLinks.classList.remove('active');
+    navOverlay.classList.remove('active');
+    document.body.style.overflow = '';
+  });
+});
+
+// Show/hide floating CTA on scroll
+let lastScroll = 0;
+window.addEventListener('scroll', () => {
+  const currentScroll = window.pageYOffset;
+  
+  if (window.innerWidth <= 767) {
+    if (currentScroll > 300) {
+      floatingCta.classList.add('visible');
+    } else {
+      floatingCta.classList.remove('visible');
+    }
+  }
+  
+  lastScroll = currentScroll;
 });
 </script>
 </body>
