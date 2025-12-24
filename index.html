@@ -47,6 +47,7 @@ body {
   max-width: 400px;
   width: 100%;
   height: auto;
+  loading: lazy;
 }
 
 /* HEADER */
@@ -216,6 +217,9 @@ nav a.nav-cta:hover {
   font-size: 1.25rem;
   opacity: 0.95;
   margin-bottom: 40px;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .cta {
@@ -338,28 +342,139 @@ nav a.nav-cta:hover {
   line-height: 1.6;
 }
 
-/* BENEFITS */
+/* Course details section */
+.course-detail {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+
+.course-detail h4 {
+  color: var(--primary);
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+}
+
+.course-detail ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.course-detail li {
+  margin-bottom: 8px;
+  padding-left: 20px;
+  position: relative;
+  color: var(--text-muted);
+}
+
+.course-detail li:before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-weight: bold;
+}
+
+/* Read More button for mobile */
+.read-more-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--primary);
+  font-weight: 600;
+  cursor: pointer;
+  padding: 8px 0;
+  font-size: 0.95rem;
+  margin-top: 10px;
+}
+
+.read-more-toggle .icon {
+  display: inline-block;
+  margin-left: 5px;
+  transition: transform 0.3s ease;
+}
+
+.read-more-toggle.active .icon {
+  transform: rotate(180deg);
+}
+
+/* BENEFITS - CLICKABLE CARDS */
 .benefits-grid {
   display: grid;
-  gap: 20px;
+  gap: 16px;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
 
 .benefit-card {
   background: white;
-  padding: 28px;
+  padding: 20px;
   border-radius: var(--radius-md);
   border: 2px solid var(--border);
-  text-align: center;
+  text-align: left;
   font-weight: 600;
   color: var(--text);
   transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
 }
 
 .benefit-card:hover {
   border-color: var(--secondary);
   transform: translateY(-2px);
   box-shadow: var(--shadow-md);
+}
+
+.benefit-card.active {
+  border-color: var(--secondary);
+  background: linear-gradient(to bottom, #fffbf0 0%, white 100%);
+}
+
+.benefit-icon {
+  font-size: 1.5rem;
+  margin-bottom: 12px;
+  display: inline-block;
+}
+
+.benefit-card h4 {
+  margin-bottom: 8px;
+  font-size: 1rem;
+  display: inline-block;
+  width: calc(100% - 30px);
+}
+
+.benefit-card .expand-icon {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+.benefit-card.active .expand-icon {
+  transform: rotate(180deg);
+}
+
+.benefit-details {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+  margin-top: 0;
+}
+
+.benefit-card.active .benefit-details {
+  max-height: 500px;
+  margin-top: 15px;
+}
+
+.benefit-details p {
+  color: var(--text-muted);
+  font-weight: normal;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0;
+  padding: 15px;
+  background: var(--bg);
+  border-radius: var(--radius-sm);
 }
 
 /* SCHEDULE TABLE */
@@ -384,6 +499,25 @@ nav a.nav-cta:hover {
   font-size: 1.1rem;
   color: var(--text-muted);
   margin: 8px 0;
+}
+
+.schedule-overview {
+  margin-top: 30px;
+  padding: 25px;
+  background: var(--bg-alt);
+  border-radius: var(--radius-md);
+  border-left: 4px solid var(--primary);
+}
+
+.schedule-overview h4 {
+  color: var(--primary);
+  margin-bottom: 10px;
+  font-size: 1.2rem;
+}
+
+.schedule-overview p {
+  color: var(--text-muted);
+  margin-bottom: 10px;
 }
 
 table {
@@ -418,17 +552,129 @@ tr:hover td {
   background: var(--bg);
 }
 
-.check {
-  color: var(--accent);
-  font-weight: bold;
-  font-size: 1.3rem;
+/* PRICING SECTION - IMPROVED */
+.pricing-section {
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
-/* PRICING TABLE */
+.pricing-options {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 40px;
+}
+
+.pricing-option {
+  background: white;
+  border: 2px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  text-align: center;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.pricing-option.featured {
+  border-color: var(--secondary);
+  background: linear-gradient(to bottom, #fffbf0 0%, white 100%);
+  transform: translateY(-10px);
+  box-shadow: var(--shadow-lg);
+}
+
+.pricing-option:hover:not(.featured) {
+  transform: translateY(-5px);
+  border-color: var(--primary-light);
+  box-shadow: var(--shadow-md);
+}
+
+.pricing-badge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--secondary);
+  color: var(--primary-dark);
+  padding: 6px 20px;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.pricing-option h3 {
+  color: var(--primary-dark);
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.price-display {
+  margin-bottom: 24px;
+}
+
+.original-price {
+  font-size: 1.2rem;
+  color: var(--text-muted);
+  text-decoration: line-through;
+  margin-bottom: 5px;
+}
+
+.discounted-price {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--primary);
+  line-height: 1;
+}
+
+.discount-note {
+  font-size: 0.9rem;
+  color: var(--accent);
+  font-weight: 600;
+  margin-top: 5px;
+}
+
+.pricing-features {
+  list-style: none;
+  padding: 0;
+  margin: 24px 0;
+  text-align: left;
+}
+
+.pricing-features li {
+  margin-bottom: 12px;
+  padding-left: 28px;
+  position: relative;
+  color: var(--text-muted);
+}
+
+.pricing-features li:before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-weight: bold;
+}
+
+.pricing-features li.included:before {
+  content: "✓";
+  color: var(--accent);
+}
+
+.pricing-features li.not-included {
+  color: var(--text-muted);
+  opacity: 0.6;
+}
+
+.pricing-features li.not-included:before {
+  content: "—";
+  color: var(--text-muted);
+}
+
 .pricing-table {
   max-width: 1000px;
   margin: 40px auto;
   overflow-x: auto;
+  display: none;
 }
 
 .pricing-table table {
@@ -522,6 +768,124 @@ tr:hover td {
 .pricing-card .feature-badge.active {
   background: var(--accent);
   color: white;
+}
+
+/* CONTACT SECTION */
+.contact-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.map-box {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  height: 400px;
+}
+
+.map-box iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.contact-info {
+  background: white;
+  padding: 40px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-md);
+}
+
+.contact-info p {
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.contact-info strong {
+  color: var(--primary);
+  display: block;
+  margin-bottom: 8px;
+}
+
+.contact-info a {
+  color: var(--primary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.contact-info a:hover {
+  color: var(--primary-light);
+  text-decoration: underline;
+}
+
+/* FAQ SECTION */
+.faq-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.faq-item {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  margin-bottom: 16px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.faq-item.active {
+  border-color: var(--secondary);
+  box-shadow: var(--shadow-sm);
+}
+
+.faq-question {
+  padding: 24px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  color: var(--primary-dark);
+}
+
+.faq-question:hover {
+  background: var(--bg);
+}
+
+.faq-icon {
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+  color: var(--primary);
+}
+
+.faq-item.active .faq-icon {
+  transform: rotate(180deg);
+  color: var(--secondary);
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+}
+
+.faq-item.active .faq-answer {
+  max-height: 500px;
+}
+
+.faq-answer-content {
+  padding: 0 24px 24px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.faq-answer-content .mn-version,
+.faq-answer-content .en-version {
+  margin-bottom: 16px;
 }
 
 /* FLOATING CTA BAR */
@@ -641,6 +1005,32 @@ footer {
 footer p {
   margin: 8px 0;
   opacity: 0.9;
+}
+
+/* Trust Badges */
+.trust-badges {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  margin: 40px auto;
+  flex-wrap: wrap;
+  max-width: 1000px;
+}
+
+.trust-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: white;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  font-size: 0.9rem;
+  color: var(--text);
+}
+
+.trust-badge span:first-child {
+  font-size: 1.2rem;
 }
 
 /* MOBILE */
@@ -822,18 +1212,67 @@ footer p {
     font-size: 0.9rem;
   }
   
+  .course-detail {
+    margin-top: 15px;
+    padding-top: 15px;
+  }
+  
+  .course-detail h4 {
+    font-size: 1rem;
+  }
+  
+  /* Read More functionality on mobile */
+  .read-more-toggle {
+    display: block;
+  }
+  
+  .course-detail {
+    max-height: 300px;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+  }
+  
+  .course-detail.expanded {
+    max-height: 1000px;
+  }
+  
   .benefits-grid {
     grid-template-columns: 1fr;
     gap: 12px;
   }
   
   .benefit-card {
-    padding: 18px;
+    padding: 16px;
     font-size: 0.9rem;
     min-height: 52px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  }
+  
+  .benefit-card h4 {
+    font-size: 0.95rem;
+    width: calc(100% - 25px);
+  }
+  
+  .benefit-icon {
+    font-size: 1.3rem;
+    margin-bottom: 8px;
+  }
+  
+  /* PRICING MOBILE */
+  .pricing-options {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .pricing-option.featured {
+    transform: none;
+  }
+  
+  .pricing-option:hover:not(.featured) {
+    transform: none;
+  }
+  
+  .discounted-price {
+    font-size: 1.8rem;
   }
   
   .schedule-container {
@@ -851,6 +1290,34 @@ footer p {
     font-size: 0.9rem;
   }
   
+  .schedule-overview {
+    padding: 15px;
+  }
+  
+  /* CONTACT SECTION MOBILE */
+  .contact-container {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  
+  .map-box {
+    height: 300px;
+  }
+  
+  .contact-info {
+    padding: 24px;
+  }
+  
+  /* FAQ MOBILE */
+  .faq-question {
+    padding: 18px;
+    font-size: 0.95rem;
+  }
+  
+  .faq-answer-content {
+    padding: 0 18px 18px;
+  }
+  
   table { 
     font-size: 0.7rem;
     min-width: 500px;
@@ -865,18 +1332,17 @@ footer p {
     font-size: 0.65rem;
   }
   
-  /* Card-based pricing for mobile */
-  .pricing-table table {
-    display: none;
+  /* Trust badges mobile */
+  .trust-badges {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
   }
   
-  .pricing-cards {
-    display: block;
-    padding: 0 4px;
-  }
-  
-  .pricing-card {
-    margin-bottom: 16px;
+  .trust-badge {
+    width: 100%;
+    max-width: 280px;
+    justify-content: center;
   }
   
   .info-card {
@@ -919,6 +1385,19 @@ footer p {
     display: block;
   }
 }
+
+/* Desktop only */
+@media (min-width: 768px) {
+  .pricing-table {
+    display: block;
+  }
+  .pricing-cards {
+    display: none;
+  }
+  .pricing-options {
+    display: none;
+  }
+}
 </style>
 </head>
 
@@ -942,6 +1421,7 @@ footer p {
         <a href="#benefits" data-en="Benefits" data-mn="Давуу тал">Давуу тал</a>
         <a href="#schedule" data-en="Schedule" data-mn="Хуваарь">Хуваарь</a>
         <a href="#scholarship" data-en="Scholarship" data-mn="Тэтгэлэг">Тэтгэлэг</a>
+        <a href="#contact" data-en="Contact" data-mn="Холбоо барих">Холбоо барих</a>
         <a href="#apply" class="nav-cta" data-en="Apply Now" data-mn="Одоо бүртгүүлэх">Одоо бүртгүүлэх</a>
         <button id="langToggle">EN</button>
       </div>
@@ -954,15 +1434,15 @@ footer p {
   <div class="hero-content">
     <div class="hero-badge" data-en="🎓 University Preparation Program" data-mn="🎓 Их сургуульд бэлтгэх хөтөлбөр">🎓 Их сургуульд бэлтгэх хөтөлбөр</div>
     <h1 data-en="Head Start Program" data-mn="Head Start хөтөлбөр">Head Start хөтөлбөр</h1>
-    <p data-en="Build academic readiness, gain real university experience, and strengthen your university applications before graduation—all while earning credits and scholarships." data-mn="Ахлах сургуулиа төгсөхөөсөө өмнө их сургуульд бэлтгэж, их сургуулийн хичээл судалж, кредит цуглуулан, тэтгэлэг авах боломж.">
-      Ахлах сургуулиа төгсөхөөсөө өмнө их сургуульд бэлтгэж,
-      их сургуулийн хичээл судалж, кредит цуглуулан,
-      тэтгэлэг авах боломж.
+    <p class="en-version" data-en="The Head Start Program at the American University of Mongolia is a structured university preparation program for high school students. Students study real university-level courses on campus, develop academic English and critical thinking skills, and receive guidance on university applications and career planning. By completing the program, students earn transferable university credits, gain confidence in an academic environment, and significantly strengthen their university applications—both in Mongolia and abroad.">
+      The Head Start Program at the American University of Mongolia is a structured university preparation program for high school students. Students study real university-level courses on campus, develop academic English and critical thinking skills, and receive guidance on university applications and career planning. By completing the program, students earn transferable university credits, gain confidence in an academic environment, and significantly strengthen their university applications—both in Mongolia and abroad.
+    </p>
+    <p class="mn-version" data-mn="American University of Mongolia-ийн Head Start хөтөлбөр нь ахлах ангийн сурагчдыг их сургуульд системтэйгээр бэлтгэх хөтөлбөр юм. Сурагчид AUM кампус дээр их сургуулийн түвшний хичээл судалж, академик англи хэл, логик сэтгэлгээ, бие даан суралцах чадвараа хөгжүүлнэ. Хөтөлбөрийг амжилттай дүүргэснээр сурагчид их сургуулийн кредит цуглуулж, элсэлтийн өргөдлөө илүү хүчтэй болгож, дотоод болон гадаадын их сургуульд суралцах бэлтгэлтэй болно.">
+      American University of Mongolia-ийн Head Start хөтөлбөр нь ахлах ангийн сурагчдыг их сургуульд системтэйгээр бэлтгэх хөтөлбөр юм. Сурагчид AUM кампус дээр их сургуулийн түвшний хичээл судалж, академик англи хэл, логик сэтгэлгээ, бие даан суралцах чадвараа хөгжүүлнэ. Хөтөлбөрийг амжилттай дүүргэснээр сурагчид их сургуулийн кредит цуглуулж, элсэлтийн өргөдлөө илүү хүчтэй болгож, дотоод болон гадаадын их сургуульд суралцах бэлтгэлтэй болно.
     </p>
     <a href="#apply" class="cta" data-en="Start Your Journey" data-mn="Аяллаа эхлүүлэх">Аяллаа эхлүүлэх</a>
   </div>
 </section>
-
 
 <section class="section" id="courses">
   <h2 data-en="Courses Offered" data-mn="Санал болгож буй хичээлүүд">Санал болгож буй хичээлүүд</h2>
@@ -972,16 +1452,57 @@ footer p {
       <div class="card-icon">💼</div>
       <h3>Business Finance</h3>
       <p data-en="Master financial literacy and core business concepts essential for university success and career readiness." data-mn="Санхүүгийн суурь ойлголт, бизнесийн үндсэн мэдлэгийг эзэмшиж их сургууль болон ирээдүйн мэргэжилд бэлтгэнэ.">Санхүүгийн суурь ойлголт, бизнесийн үндсэн мэдлэгийг эзэмшиж их сургууль болон ирээдүйн мэргэжилд бэлтгэнэ.</p>
+      
+      <div class="course-detail">
+        <h4 data-en="What students gain:" data-mn="Сурагчид дараах мэдлэг, чадварыг эзэмшинэ:">Сурагчид дараах мэдлэг, чадварыг эзэмшинэ:</h4>
+        <ul>
+          <li data-en="Understanding money, budgeting, and financial decision-making" data-mn="Мөнгө, төсөв төлөвлөлт, санхүүгийн зөв шийдвэр гаргах суурь ойлголт">Мөнгө, төсөв төлөвлөлт, санхүүгийн зөв шийдвэр гаргах суурь ойлголт</li>
+          <li data-en="Basic economics and business thinking" data-mn="Эдийн засаг, бизнесийн үндсэн ойлголтуудыг бодит жишээгээр ойлгох чадвар">Эдийн засаг, бизнесийн үндсэн ойлголтуудыг бодит жишээгээр ойлгох чадвар</li>
+          <li data-en="Strong foundation for business, economics, finance, and management majors" data-mn="Бизнес, эдийн засаг, санхүү, менежментийн чиглэлээр их сургуульд суралцахад шаардлагатай бат бөх суурь">Бизнес, эдийн засаг, санхүү, менежментийн чиглэлээр их сургуульд суралцахад шаардлагатай бат бөх суурь</li>
+        </ul>
+      </div>
+      <button class="read-more-toggle">
+        <span data-en="Read More" data-mn="Дэлгэрэнгүй">Дэлгэрэнгүй</span>
+        <span class="icon">▼</span>
+      </button>
     </div>
+    
     <div class="card">
       <div class="card-icon">🗣️</div>
       <h3 data-en="ESL" data-mn="ESL (Академик англи хэл)">ESL (Академик англи хэл)</h3>
       <p data-en="Build academic English proficiency for university coursework with expert instruction and practical skills." data-mn="Их сургуулийн хичээлд шаардлагатай академик англи хэл, бичих, илтгэх чадварыг хөгжүүлнэ.">Их сургуулийн хичээлд шаардлагатай академик англи хэл, бичих, илтгэх чадварыг хөгжүүлнэ.</p>
+      
+      <div class="course-detail">
+        <h4 data-en="What students gain:" data-mn="Сурагчид дараах чадваруудыг хөгжүүлнэ:">Сурагчид дараах чадваруудыг хөгжүүлнэ:</h4>
+        <ul>
+          <li data-en="Academic writing & paragraph structure" data-mn="Их сургуулийн түвшний бичгийн ажил, эссэ, догол мөрийн зөв бүтэц">Их сургуулийн түвшний бичгийн ажил, эссэ, догол мөрийн зөв бүтэц</li>
+          <li data-en="Presentation and discussion skills" data-mn="Англи хэлээр илтгэх, санал бодлоо илэрхийлэх, хэлэлцүүлэгт оролцох чадвар">Англи хэлээр илтгэх, санал бодлоо илэрхийлэх, хэлэлцүүлэгт оролцох чадвар</li>
+          <li data-en="Reading university-level texts confidently" data-mn="Академик эх сурвалж, сурах бичиг, өгүүллийг уншиж ойлгох чадвар">Академик эх сурвалж, сурах бичиг, өгүүллийг уншиж ойлгох чадвар</li>
+        </ul>
+      </div>
+      <button class="read-more-toggle">
+        <span data-en="Read More" data-mn="Дэлгэрэнгүй">Дэлгэрэнгүй</span>
+        <span class="icon">▼</span>
+      </button>
     </div>
+    
     <div class="card">
       <div class="card-icon">📊</div>
       <h3>Data Science</h3>
       <p data-en="Explore data analysis foundations and develop logical thinking skills for the modern world." data-mn="Өгөгдөлд суурилсан сэтгэлгээ, логик анализын үндсийг эзэмшинэ.">Өгөгдөлд суурилсан сэтгэлгээ, логик анализын үндсийг эзэмшинэ.</p>
+      
+      <div class="course-detail">
+        <h4 data-en="What students gain:" data-mn="Сурагчид дараах чадваруудыг эзэмшинэ:">Сурагчид дараах чадваруудыг эзэмшинэ:</h4>
+        <ul>
+          <li data-en="Logical thinking and problem-solving" data-mn="Логик сэтгэлгээ, асуудлыг системтэйгээр шийдвэрлэх чадвар">Логик сэтгэлгээ, асуудлыг системтэйгээр шийдвэрлэх чадвар</li>
+          <li data-en="Basic data analysis and interpretation" data-mn="Өгөгдөл, мэдээлэлд суурилсан дүн шинжилгээ хийх суурь ойлголт">Өгөгдөл, мэдээлэлд суурилсан дүн шинжилгээ хийх суурь ойлголт</li>
+          <li data-en="Confidence working with numbers and information" data-mn="Тоо баримт, мэдээлэлтэй ажиллахдаа өөртөө итгэлтэй болох">Тоо баримт, мэдээлэлтэй ажиллахдаа өөртөө итгэлтэй болох</li>
+        </ul>
+      </div>
+      <button class="read-more-toggle">
+        <span data-en="Read More" data-mn="Дэлгэрэнгүй">Дэлгэрэнгүй</span>
+        <span class="icon">▼</span>
+      </button>
     </div>
   </div>
 </section>
@@ -991,24 +1512,134 @@ footer p {
   <h2 data-en="Program Benefits" data-mn="Хөтөлбөрийн давуу талууд">Хөтөлбөрийн давуу талууд</h2>
   <p class="section-subtitle" data-en="Everything you need to succeed at university" data-mn="Их сургуульд амжилттай суралцахад шаардлагатай бүх зүйл">Их сургуульд амжилттай суралцахад шаардлагатай бүх зүйл</p>
   <div class="benefits-grid">
-    <div class="benefit-card" data-en="🔄 Transferable University Credits" data-mn="🔄 Шилжих боломжтой их сургуулийн кредит">🔄 Шилжих боломжтой их сургуулийн кредит</div>
-    <div class="benefit-card" data-en="🕒 Time & Cost Savings" data-mn="🕒 Цаг, зардал хэмнэлт">🕒 Цаг, зардал хэмнэлт</div>
-    <div class="benefit-card" data-en="🌍 Study Abroad Preparation" data-mn="🌍 Гадаадад суралцах бэлтгэл">🌍 Гадаадад суралцах бэлтгэл</div>
-    <div class="benefit-card" data-en="📚 University Preparation Workshops" data-mn="📚 Их сургуульд бэлтгэх сургалт, зөвлөгөө">📚 Их сургуульд бэлтгэх сургалт, зөвлөгөө</div>
-    <div class="benefit-card" data-en="🏫 Full Campus Access" data-mn="🏫 AUM кампусын бүрэн ашиглалт">🏫 AUM кампусын бүрэн ашиглалт</div>
-    <div class="benefit-card" data-en="✍️ Faculty Recommendation Letter" data-mn="✍️ Багшийн тодорхойлох захидал">✍️ Багшийн тодорхойлох захидал</div>
-    <div class="benefit-card" data-en="🎖️ Certificate of Completion" data-mn="🎖️ Төгсөлтийн сертификат">🎖️ Төгсөлтийн сертификат</div>
-    <div class="benefit-card" data-en="🚀 Stronger Applications" data-mn="🚀 Их сургуулийн өргөдөлд давуу тал">🚀 Их сургуулийн өргөдөлд давуу тал</div>
+    <!-- Benefit 1 -->
+    <div class="benefit-card" data-benefit="1">
+      <div class="benefit-icon">🔄</div>
+      <h4 data-en="Transferable University Credits" data-mn="Шилжих боломжтой их сургуулийн кредит">Шилжих боломжтой их сургуулийн кредит</h4>
+      <span class="expand-icon">▼</span>
+      <div class="benefit-details">
+        <p class="en-version" data-en="Courses completed through the Head Start Program are taught at a university level and may be counted as academic credits at AUM. These credits may also be recognized by other universities, helping students reduce future course load and tuition costs.">
+          Courses completed through the Head Start Program are taught at a university level and may be counted as academic credits at AUM. These credits may also be recognized by other universities, helping students reduce future course load and tuition costs.
+        </p>
+        <p class="mn-version" data-mn="Head Start хөтөлбөрийн хүрээнд судалсан хичээлүүд нь их сургуулийн түвшний кредит тул AUM-д шууд тооцогдох боломжтой. Мөн бусад дотоод, гадаадын их сургуулиуд кредитийг шилжүүлэн тооцох боломжтой бөгөөд ингэснээр суралцах хугацаа болон зардлыг бууруулна.">
+          Head Start хөтөлбөрийн хүрээнд судалсан хичээлүүд нь их сургуулийн түвшний кредит тул AUM-д шууд тооцогдох боломжтой. Мөн бусад дотоод, гадаадын их сургуулиуд кредитийг шилжүүлэн тооцох боломжтой бөгөөд ингэснээр суралцах хугацаа болон зардлыг бууруулна.
+        </p>
+      </div>
+    </div>
+    
+    <!-- Benefit 2 -->
+    <div class="benefit-card" data-benefit="2">
+      <div class="benefit-icon">🕒</div>
+      <h4 data-en="Time & Cost Savings" data-mn="Цаг, зардал хэмнэлт">Цаг, зардал хэмнэлт</h4>
+      <span class="expand-icon">▼</span>
+      <div class="benefit-details">
+        <p class="en-version" data-en="By completing university-level courses while still in high school, students shorten their overall study time. This results in significant savings on tuition fees and living expenses in the future.">
+          By completing university-level courses while still in high school, students shorten their overall study time. This results in significant savings on tuition fees and living expenses in the future.
+        </p>
+        <p class="mn-version" data-mn="Их сургуулийн хичээлүүдийг ахлах ангид байхдаа судалснаар ирээдүйд давхар хичээл авах шаардлага багасч, сургалтын нийт хугацаа богиносно. Энэ нь сургалтын төлбөр болон амьдрах зардлыг хэмнэх бодит давуу тал болно.">
+          Их сургуулийн хичээлүүдийг ахлах ангид байхдаа судалснаар ирээдүйд давхар хичээл авах шаардлага багасч, сургалтын нийт хугацаа богиносно. Энэ нь сургалтын төлбөр болон амьдрах зардлыг хэмнэх бодит давуу тал болно.
+        </p>
+      </div>
+    </div>
+    
+    <!-- Benefit 3 -->
+    <div class="benefit-card" data-benefit="3">
+      <div class="benefit-icon">🌍</div>
+      <h4 data-en="Study Abroad Preparation" data-mn="Гадаадад суралцах бэлтгэл">Гадаадад суралцах бэлтгэл</h4>
+      <span class="expand-icon">▼</span>
+      <div class="benefit-details">
+        <p class="en-version" data-en="Students receive structured guidance on studying abroad, including understanding admission requirements, application timelines, and scholarship opportunities. This prepares them to apply confidently to international universities.">
+          Students receive structured guidance on studying abroad, including understanding admission requirements, application timelines, and scholarship opportunities. This prepares them to apply confidently to international universities.
+        </p>
+        <p class="mn-version" data-mn="Сурагчид гадаадын их сургуулиудад тавигддаг шаардлага, элсэлтийн үйл явц, тэтгэлгийн боломжуудын талаар мэргэжлийн зөвлөгөө авна. Энэ нь сурагчдыг олон улсын түвшинд өрсөлдөхүйц бэлтгэлтэй болгоно.">
+          Сурагчид гадаадын их сургуулиудад тавигддаг шаардлага, элсэлтийн үйл явц, тэтгэлгийн боломжуудын талаар мэргэжлийн зөвлөгөө авна. Энэ нь сурагчдыг олон улсын түвшинд өрсөлдөхүйц бэлтгэлтэй болгоно.
+        </p>
+      </div>
+    </div>
+    
+    <!-- Benefit 4 -->
+    <div class="benefit-card" data-benefit="4">
+      <div class="benefit-icon">📚</div>
+      <h4 data-en="University Preparation Workshops" data-mn="Их сургуульд бэлтгэх сургалт, зөвлөгөө">Их сургуульд бэлтгэх сургалт, зөвлөгөө</h4>
+      <span class="expand-icon">▼</span>
+      <div class="benefit-details">
+        <p class="en-version" data-en="The program includes workshops on personal statement writing, academic essays, major selection, and effective study skills—essential tools for success at university.">
+          The program includes workshops on personal statement writing, academic essays, major selection, and effective study skills—essential tools for success at university.
+        </p>
+        <p class="mn-version" data-mn="Хувийн мэдэгдэл бичих, эссэ боловсруулах, мэргэжил сонгох, суралцах арга барилд суралцах зэрэг их сургуульд амжилттай суралцахад зайлшгүй шаардлагатай ур чадваруудыг эзэмшинэ.">
+          Хувийн мэдэгдэл бичих, эссэ боловсруулах, мэргэжил сонгох, суралцах арга барилд суралцах зэрэг их сургуульд амжилттай суралцахад зайлшгүй шаардлагатай ур чадваруудыг эзэмшинэ.
+        </p>
+      </div>
+    </div>
+    
+    <!-- Benefit 5 -->
+    <div class="benefit-card" data-benefit="5">
+      <div class="benefit-icon">🏫</div>
+      <h4 data-en="Full Campus Access" data-mn="AUM кампусын бүрэн ашиглалт">AUM кампусын бүрэн ашиглалт</h4>
+      <span class="expand-icon">▼</span>
+      <div class="benefit-details">
+        <p class="en-version" data-en="Students study in a real university environment and have access to AUM classrooms, learning resources, and academic facilities. This helps them adapt smoothly to university life.">
+          Students study in a real university environment and have access to AUM classrooms, learning resources, and academic facilities. This helps them adapt smoothly to university life.
+        </p>
+        <p class="mn-version" data-mn="Сурагчид AUM-ийн бодит кампусын орчинд суралцаж, номын сан, анги танхим, сургалтын нөөцүүдийг ашиглах боломжтой. Энэ нь их сургуулийн орчинд хурдан дасан зохицоход тусална.">
+          Сурагчид AUM-ийн бодит кампусын орчинд суралцаж, номын сан, анги танхим, сургалтын нөөцүүдийг ашиглах боломжтой. Энэ нь их сургуулийн орчинд хурдан дасан зохицоход тусална.
+        </p>
+      </div>
+    </div>
+    
+    <!-- Benefit 6 -->
+    <div class="benefit-card" data-benefit="6">
+      <div class="benefit-icon">✍️</div>
+      <h4 data-en="Faculty Recommendation Letter" data-mn="Багшийн тодорхойлох захидал">Багшийн тодорхойлох захидал</h4>
+      <span class="expand-icon">▼</span>
+      <div class="benefit-details">
+        <p class="en-version" data-en="High-performing and engaged students may receive academic recommendation letters from AUM faculty members, which are highly valuable for university and scholarship applications.">
+          High-performing and engaged students may receive academic recommendation letters from AUM faculty members, which are highly valuable for university and scholarship applications.
+        </p>
+        <p class="mn-version" data-mn="Хичээлдээ идэвхтэй, амжилттай суралцсан сурагчид AUM-ийн багш нараас тодорхойлох захидал авах боломжтой. Энэхүү захидал нь их сургуульд элсэх өргөдөлд маш чухал нөлөөтэй.">
+          Хичээлдээ идэвхтэй, амжилттай суралцсан сурагчид AUM-ийн багш нараас тодорхойлох захидал авах боломжтой. Энэхүү захидал нь их сургуульд элсэх өргөдөлд маш чухал нөлөөтэй.
+        </p>
+      </div>
+    </div>
+    
+    <!-- Benefit 7 -->
+    <div class="benefit-card" data-benefit="7">
+      <div class="benefit-icon">🎖️</div>
+      <h4 data-en="Certificate of Completion" data-mn="Төгсөлтийн сертификат">Төгсөлтийн сертификат</h4>
+      <span class="expand-icon">▼</span>
+      <div class="benefit-details">
+        <p class="en-version" data-en="Students who successfully complete the program receive an official Head Start Program Certificate, which can be included in university and scholarship applications.">
+          Students who successfully complete the program receive an official Head Start Program Certificate, which can be included in university and scholarship applications.
+        </p>
+        <p class="mn-version" data-mn="Хөтөлбөрийг амжилттай дүүргэсэн сурагч бүр албан ёсны Head Start хөтөлбөрийн сертификат авна. Энэхүү сертификатыг их сургуулийн өргөдөл болон тэтгэлгийн материалд ашиглах боломжтой.">
+          Хөтөлбөрийг амжилттай дүүргэсэн сурагч бүр албан ёсны Head Start хөтөлбөрийн сертификат авна. Энэхүү сертификатыг их сургуулийн өргөдөл болон тэтгэлгийн материалд ашиглах боломжтой.
+        </p>
+      </div>
+    </div>
+    
+    <!-- Benefit 8 -->
+    <div class="benefit-card" data-benefit="8">
+      <div class="benefit-icon">🚀</div>
+      <h4 data-en="Stronger Applications" data-mn="Их сургуульд өргөдөл гаргахад давуу тал нэмэгдэх">Их сургуульд өргөдөл гаргахад давуу тал нэмэгдэх</h4>
+      <span class="expand-icon">▼</span>
+      <div class="benefit-details">
+        <p class="en-version" data-en="By earning credits, certificates, and academic experience, Head Start students gain a clear advantage over other applicants when applying to universities in Mongolia and abroad.">
+          By earning credits, certificates, and academic experience, Head Start students gain a clear advantage over other applicants when applying to universities in Mongolia and abroad.
+        </p>
+        <p class="mn-version" data-mn="Head Start хөтөлбөрт хамрагдсан сурагчид академик туршлага, кредит, сертификат, тодорхойлох захидал зэргээрээ бусад өргөдөл гаргагчдаас илүү давуу байдалтай болно.">
+          Head Start хөтөлбөрт хамрагдсан сурагчид академик туршлага, кредит, сертификат, тодорхойлох захидал зэргээрээ бусад өргөдөл гаргагчдаас илүү давуу байдалтай болно.
+        </p>
+      </div>
+    </div>
   </div>
 </section>
 </div>
 
 <section class="section" id="schedule">
-  <h2 data-en="Weekly Schedule" data-mn="Xуваарь"> Xуваарь</h2>
+  <h2 data-en="Weekly Schedule" data-mn="Хуваарь">Хуваарь</h2>
   <div class="schedule-container">
     <div class="schedule-header">
       <p><strong data-en="Time:" data-mn="Цаг:">Цаг:</strong> 15:00 – 16:30</p>
-      <p><strong data-en="Classroom:" data-mn="Анги:">Анги:</strong> 204</p>
     </div>
     <table>
       <tr>
@@ -1023,9 +1654,19 @@ footer p {
         <td>Data Science</td>
         <td>ESL</td>
         <td>—</td>
-        <td data-en="Self-Development & Workshops" data-mn="Өөрийгөө хөгжүүлэх & семинар">Өөрийгөө хөгжүүлэх & семинар</td>
+        <td data-en="Self-Development & Workshops" data-mn="Хувь хүний хөгжил, ур чадварын семинар">Хувь хүний хөгжил, ур чадварын семинар</td>
       </tr>
     </table>
+    
+    <div class="schedule-overview">
+      <h4 data-en="Weekly Schedule Overview" data-mn="7 хоногийн хуваарь">7 хоногийн хуваарь</h4>
+      <p class="en-version" data-en="Classes are held Monday to Friday from 15:00 to 16:30 on the AUM campus. Each course meets once per week, allowing students to balance school and Head Start studies comfortably. Fridays are dedicated to personal development sessions, university preparation workshops, and skills training.">
+        Classes are held Monday to Friday from 15:00 to 16:30 on the AUM campus. Each course meets once per week, allowing students to balance school and Head Start studies comfortably. Fridays are dedicated to personal development sessions, university preparation workshops, and skills training.
+      </p>
+      <p class="mn-version" data-mn="Хичээлүүд Даваа–Баасан гаригт 15:00–16:30 цагийн хооронд AUM кампус дээр явагдана. Хичээлүүд долоо хоногт нэг удаа орж, сурагчид ерөнхий боловсролын сургуультайгаа хослуулан суралцах боломжтой. Баасан гарагт хувь хүний хөгжил, их сургуульд бэлтгэх семинарууд зохион байгуулагдана.">
+        Хичээлүүд Даваа–Баасан гаригт 15:00–16:30 цагийн хооронд AUM кампус дээр явагдана. Хичээлүүд долоо хоногт нэг удаа орж, сурагчид ерөнхий боловсролын сургуультайгаа хослуулан суралцах боломжтой. Баасан гарагт хувь хүний хөгжил, их сургуульд бэлтгэх семинарууд зохион байгуулагдана.
+      </p>
+    </div>
   </div>
 </section>
 
@@ -1034,8 +1675,8 @@ footer p {
   <div class="scholarship-box">
     <h3 data-en="Pass the Enrollment Exam" data-mn="Элсэлтийн шалгалтад тэнцвэл">Элсэлтийн шалгалтад тэнцвэл</h3>
     <div class="big-number">50%</div>
-    <p style="font-size: 1.2rem; margin-top: 20px;" data-en="All students who pass the online placement exam automatically receive a 50% scholarship on all courses." data-mn="Онлайн англи болон математикийн шалгалтад тэнцсэн бүх сурагч бүх хичээлдээ автоматаар 50% тэтгэлэг авна.">
-      Онлайн англи болон математикийн шалгалтад тэнцсэн бүх сурагч
+    <p style="font-size: 1.2rem; margin-top: 20px;" data-en="All students who pass the placement exam automatically receive a 50% scholarship on all courses." data-mn="Англи хэл болон математикийн шалгалтад тэнцсэн бүх сурагч бүх хичээлдээ автоматаар 50% тэтгэлэг авна.">
+      Англи хэл болон математикийн шалгалтад тэнцсэн бүх сурагч
       бүх хичээлдээ автоматаар 50% тэтгэлэг авна.
     </p>
   </div>
@@ -1045,123 +1686,437 @@ footer p {
 <section class="section">
   <h2 data-en="Course Options & Pricing" data-mn="Хичээлийн сонголт ба үнэ">Хичээлийн сонголт ба үнэ</h2>
   <p class="section-subtitle" data-en="Choose the path that fits your goals" data-mn="Өөрийн зорилгодоо тохирсон замаа сонгоорой">Өөрийн зорилгодоо тохирсон замаа сонгоорой</p>
-  <div class="pricing-table">
-    <table>
-      <tr>
-        <th data-en="Option" data-mn="Сонголт">Сонголт</th>
-        <th data-en="Campus Access" data-mn="Кампус нэвтрэх">Кампус нэвтрэх</th>
-        <th data-en="Workshops" data-mn="Семинарууд">Семинарууд</th>
-        <th data-en="Recommendation" data-mn="Зөвлөмж">Зөвлөмж</th>
-        <th data-en="Full Price" data-mn="Бүтэн үнэ">Бүтэн үнэ</th>
-        <th data-en="With Scholarship" data-mn="Тэтгэлэгтэй">Тэтгэлэгтэй</th>
-      </tr>
-      <tr>
-        <td data-en="1 Course" data-mn="1 хичээл">1 хичээл</td>
-        <td class="check">✔</td>
-        <td>—</td>
-        <td>—</td>
-        <td>1,500,000 ₮</td>
-        <td><strong>750,000 ₮</strong></td>
-      </tr>
-      <tr>
-        <td data-en="2 Courses" data-mn="2 хичээл">2 хичээл</td>
-        <td class="check">✔</td>
-        <td class="check">✔</td>
-        <td>—</td>
-        <td>3,000,000 ₮</td>
-        <td><strong>1,500,000 ₮</strong></td>
-      </tr>
-      <tr>
-        <td data-en="3-Course Bundle" data-mn="3 хичээлийн багц"><strong>3 хичээлийн багц</strong></td>
-        <td class="check">✔</td>
-        <td class="check">✔</td>
-        <td class="check">✔</td>
-        <td>4,500,000 ₮</td>
-        <td><strong>2,250,000 ₮</strong></td>
-      </tr>
-    </table>
-  </div>
   
-  <!-- Mobile card-based pricing -->
-  <div class="pricing-cards">
-    <div class="pricing-card">
-      <h3 data-en="1 Course" data-mn="1 хичээл">1 хичээл</h3>
-      <div class="price-row">
-        <span class="price-label" data-en="Full Price" data-mn="Бүтэн үнэ">Бүтэн үнэ</span>
-        <span class="price-value">1,500,000 ₮</span>
+  <div class="pricing-section">
+    <!-- Desktop: Grid Layout -->
+    <div class="pricing-options">
+      <div class="pricing-option">
+        <div class="pricing-badge" data-en="Most Flexible" data-mn="Хамгийн уян хатан">Хамгийн уян хатан</div>
+        <h3 data-en="1 Course" data-mn="1 хичээл">1 хичээл</h3>
+        <div class="price-display">
+          <div class="original-price">1,500,000 ₮</div>
+          <div class="discounted-price">750,000 ₮</div>
+          <div class="discount-note" data-en="With 50% Scholarship" data-mn="50% тэтгэлэгтэй">50% тэтгэлэгтэй</div>
+        </div>
+        <ul class="pricing-features">
+          <li class="included" data-en="✔ Campus Access" data-mn="✔ Кампус нэвтрэх">✔ Кампус нэвтрэх</li>
+          <li class="not-included" data-en="— Workshops" data-mn="— Семинарууд">— Семинарууд</li>
+          <li class="not-included" data-en="— Recommendation" data-mn="— Зөвлөмж">— Зөвлөмж</li>
+          <li class="included" data-en="✔ University Credits" data-mn="✔ Их сургуулийн кредит">✔ Их сургуулийн кредит</li>
+        </ul>
+        <a href="#apply" class="cta" style="width: 100%;" data-en="Choose This Option" data-mn="Энэ сонголтыг сонгох">Энэ сонголтыг сонгох</a>
       </div>
-      <div class="price-row">
-        <span class="price-label" data-en="With Scholarship" data-mn="Тэтгэлэгтэй">Тэтгэлэгтэй</span>
-        <span class="price-value discounted">750,000 ₮</span>
+      
+      <div class="pricing-option">
+        <div class="pricing-badge" data-en="Popular Choice" data-mn="Алдартай сонголт">Алдартай сонголт</div>
+        <h3 data-en="2 Courses" data-mn="2 хичээл">2 хичээл</h3>
+        <div class="price-display">
+          <div class="original-price">3,000,000 ₮</div>
+          <div class="discounted-price">1,500,000 ₮</div>
+          <div class="discount-note" data-en="With 50% Scholarship" data-mn="50% тэтгэлэгтэй">50% тэтгэлэгтэй</div>
+        </div>
+        <ul class="pricing-features">
+          <li class="included" data-en="✔ Campus Access" data-mn="✔ Кампус нэвтрэх">✔ Кампус нэвтрэх</li>
+          <li class="included" data-en="✔ Workshops" data-mn="✔ Семинарууд">✔ Семинарууд</li>
+          <li class="not-included" data-en="— Recommendation" data-mn="— Зөвлөмж">— Зөвлөмж</li>
+          <li class="included" data-en="✔ University Credits" data-mn="✔ Их сургуулийн кредит">✔ Их сургуулийн кредит</li>
+        </ul>
+        <a href="#apply" class="cta" style="width: 100%;" data-en="Choose This Option" data-mn="Энэ сонголтыг сонгох">Энэ сонголтыг сонгох</a>
       </div>
-      <div class="features">
-        <span class="feature-badge active" data-en="✔ Campus Access" data-mn="✔ Кампус нэвтрэх">✔ Кампус нэвтрэх</span>
+      
+      <div class="pricing-option featured">
+        <div class="pricing-badge" data-en="Best Value ⭐" data-mn="Хамгийн үнэ цэнэтэй ⭐">Хамгийн үнэ цэнэтэй ⭐</div>
+        <h3 data-en="3-Course Bundle" data-mn="3 хичээлийн багц">3 хичээлийн багц</h3>
+        <div class="price-display">
+          <div class="original-price">4,500,000 ₮</div>
+          <div class="discounted-price">2,250,000 ₮</div>
+          <div class="discount-note" data-en="With 50% Scholarship" data-mn="50% тэтгэлэгтэй">50% тэтгэлэгтэй</div>
+        </div>
+        <ul class="pricing-features">
+          <li class="included" data-en="✔ Campus Access" data-mn="✔ Кампус нэвтрэх">✔ Кампус нэвтрэх</li>
+          <li class="included" data-en="✔ Workshops" data-mn="✔ Семинарууд">✔ Семинарууд</li>
+          <li class="included" data-en="✔ Recommendation Letter" data-mn="✔ Зөвлөмжийн захидал">✔ Зөвлөмжийн захидал</li>
+          <li class="included" data-en="✔ University Credits" data-mn="✔ Их сургуулийн кредит">✔ Их сургуулийн кредит</li>
+        </ul>
+        <a href="#apply" class="cta" style="width: 100%;" data-en="Choose This Option" data-mn="Энэ сонголтыг сонгох">Энэ сонголтыг сонгох</a>
       </div>
     </div>
     
-    <div class="pricing-card">
-      <h3 data-en="2 Courses" data-mn="2 хичээл">2 хичээл</h3>
-      <div class="price-row">
-        <span class="price-label" data-en="Full Price" data-mn="Бүтэн үнэ">Бүтэн үнэ</span>
-        <span class="price-value">3,000,000 ₮</span>
-      </div>
-      <div class="price-row">
-        <span class="price-label" data-en="With Scholarship" data-mn="Тэтгэлэгтэй">Тэтгэлэгтэй</span>
-        <span class="price-value discounted">1,500,000 ₮</span>
-      </div>
-      <div class="features">
-        <span class="feature-badge active" data-en="✔ Campus" data-mn="✔ Кампус">✔ Кампус</span>
-        <span class="feature-badge active" data-en="✔ Workshops" data-mn="✔ Семинар">✔ Семинар</span>
-      </div>
+    <!-- Desktop: Table View -->
+    <div class="pricing-table">
+      <table>
+        <tr>
+          <th data-en="Option" data-mn="Сонголт">Сонголт</th>
+          <th data-en="Campus Access" data-mn="Кампус нэвтрэх">Кампус нэвтрэх</th>
+          <th data-en="Workshops" data-mn="Семинарууд">Семинарууд</th>
+          <th data-en="Recommendation" data-mn="Зөвлөмж">Зөвлөмж</th>
+          <th data-en="Full Price" data-mn="Бүтэн үнэ">Бүтэн үнэ</th>
+          <th data-en="With Scholarship" data-mn="Тэтгэлэгтэй">Тэтгэлэгтэй</th>
+        </tr>
+        <tr>
+          <td data-en="1 Course" data-mn="1 хичээл">1 хичээл</td>
+          <td><span class="tick">✓</span></td>
+          <td><span class="cross">—</span></td>
+          <td><span class="cross">—</span></td>
+          <td>1,500,000 ₮</td>
+          <td><strong>750,000 ₮</strong></td>
+        </tr>
+        <tr>
+          <td data-en="2 Courses" data-mn="2 хичээл">2 хичээл</td>
+          <td><span class="tick">✓</span></td>
+          <td><span class="tick">✓</span></td>
+          <td><span class="cross">—</span></td>
+          <td>3,000,000 ₮</td>
+          <td><strong>1,500,000 ₮</strong></td>
+        </tr>
+        <tr>
+          <td data-en="3-Course Bundle" data-mn="3 хичээлийн багц"><strong>3 хичээлийн багц</strong></td>
+          <td><span class="tick">✓</span></td>
+          <td><span class="tick">✓</span></td>
+          <td><span class="tick">✓</span></td>
+          <td>4,500,000 ₮</td>
+          <td><strong>2,250,000 ₮</strong></td>
+        </tr>
+      </table>
     </div>
     
-    <div class="pricing-card featured">
-      <h3 data-en="3-Course Bundle ⭐" data-mn="3 хичээлийн багц ⭐">3 хичээлийн багц ⭐</h3>
-      <div class="price-row">
-        <span class="price-label" data-en="Full Price" data-mn="Бүтэн үнэ">Бүтэн үнэ</span>
-        <span class="price-value">4,500,000 ₮</span>
+    <!-- Mobile: Card View -->
+    <div class="pricing-cards">
+      <div class="pricing-card">
+        <h3 data-en="1 Course" data-mn="1 хичээл">1 хичээл</h3>
+        <div class="price-row">
+          <span class="price-label" data-en="Full Price" data-mn="Бүтэн үнэ">Бүтэн үнэ</span>
+          <span class="price-value">1,500,000 ₮</span>
+        </div>
+        <div class="price-row">
+          <span class="price-label" data-en="With Scholarship" data-mn="Тэтгэлэгтэй">Тэтгэлэгтэй</span>
+          <span class="price-value discounted">750,000 ₮</span>
+        </div>
+        <div class="features">
+          <span class="feature-badge active" data-en="✔ Campus" data-mn="✔ Кампус">✔ Кампус</span>
+          <span class="feature-badge" data-en="✗ Workshops" data-mn="✗ Семинар">✗ Семинар</span>
+          <span class="feature-badge" data-en="✗ Recommendation" data-mn="✗ Зөвлөмж">✗ Зөвлөмж</span>
+        </div>
       </div>
-      <div class="price-row">
-        <span class="price-label" data-en="With Scholarship" data-mn="Тэтгэлэгтэй">Тэтгэлэгтэй</span>
-        <span class="price-value discounted">2,250,000 ₮</span>
+      
+      <div class="pricing-card">
+        <h3 data-en="2 Courses" data-mn="2 хичээл">2 хичээл</h3>
+        <div class="price-row">
+          <span class="price-label" data-en="Full Price" data-mn="Бүтэн үнэ">Бүтэн үнэ</span>
+          <span class="price-value">3,000,000 ₮</span>
+        </div>
+        <div class="price-row">
+          <span class="price-label" data-en="With Scholarship" data-mn="Тэтгэлэгтэй">Тэтгэлэгтэй</span>
+          <span class="price-value discounted">1,500,000 ₮</span>
+        </div>
+        <div class="features">
+          <span class="feature-badge active" data-en="✔ Campus" data-mn="✔ Кампус">✔ Кампус</span>
+          <span class="feature-badge active" data-en="✔ Workshops" data-mn="✔ Семинар">✔ Семинар</span>
+          <span class="feature-badge" data-en="✗ Recommendation" data-mn="✗ Зөвлөмж">✗ Зөвлөмж</span>
+        </div>
       </div>
-      <div class="features">
-        <span class="feature-badge active" data-en="✔ Campus" data-mn="✔ Кампус">✔ Кампус</span>
-        <span class="feature-badge active" data-en="✔ Workshops" data-mn="✔ Семинар">✔ Семинар</span>
-        <span class="feature-badge active" data-en="✔ Recommendation" data-mn="✔ Зөвлөмж">✔ Зөвлөмж</span>
+      
+      <div class="pricing-card featured">
+        <h3 data-en="3-Course Bundle ⭐" data-mn="3 хичээлийн багц ⭐">3 хичээлийн багц ⭐</h3>
+        <div class="price-row">
+          <span class="price-label" data-en="Full Price" data-mn="Бүтэн үнэ">Бүтэн үнэ</span>
+          <span class="price-value">4,500,000 ₮</span>
+        </div>
+        <div class="price-row">
+          <span class="price-label" data-en="With Scholarship" data-mn="Тэтгэлэгтэй">Тэтгэлэгтэй</span>
+          <span class="price-value discounted">2,250,000 ₮</span>
+        </div>
+        <div class="features">
+          <span class="feature-badge active" data-en="✔ Campus" data-mn="✔ Кампус">✔ Кампус</span>
+          <span class="feature-badge active" data-en="✔ Workshops" data-mn="✔ Семинар">✔ Семинар</span>
+          <span class="feature-badge active" data-en="✔ Recommendation" data-mn="✔ Зөвлөмж">✔ Зөвлөмж</span>
+        </div>
       </div>
     </div>
   </div>
 </section>
 </section>
 
-<section class="section">
-  <h2 data-en="University Preparation Workshops" data-mn="Их сургуульд бэлтгэх семинарууд">Их сургуульд бэлтгэх семинарууд</h2>
-  <p class="section-subtitle" data-en="Essential guidance for your university journey" data-mn="Их сургуулийн аяллалд зайлшгүй шаардлагатай зөвлөгөө">Их сургуулийн аяллалд зайлшгүй шаардлагатай зөвлөгөө</p>
-  <div class="info-card">
-    <ul>
-      <li data-en="Choosing the right major for your interests and goals" data-mn="Өөрийн сонирхол, зорилгод тохирсон мэргэжил сонгох">Өөрийн сонирхол, зорилгод тохирсон мэргэжил сонгох</li>
-      <li data-en="Personal statement writing and essay workshops" data-mn="Хувийн мэдэгдэл бичих болон эссэ бичих семинарууд">Хувийн мэдэгдэл бичих болон эссэ бичих семинарууд</li>
-      <li data-en="Study skills, time management, and academic success" data-mn="Суралцах арга ухаан, цаг хуваарилалт, академик амжилт">Суралцах арга ухаан, цаг хуваарилалт, академик амжилт</li>
-      <li data-en="Applying to universities abroad and scholarship opportunities" data-mn="Гадаадын их сургуульд элсэх болон тэтгэлгийн боломжууд">Гадаадын их сургуульд элсэх болон тэтгэлгийн боломжууд</li>
-    </ul>
+<section class="section" id="faq">
+  <h2 data-en="Frequently Asked Questions" data-mn="Түгээмэл асуултууд">Түгээмэл асуултууд</h2>
+  <p class="section-subtitle" data-en="Find answers to common questions about the Head Start Program" data-mn="Head Start хөтөлбөрийн талаарх нийтлэг асуултуудын хариултыг олоорой">Head Start хөтөлбөрийн талаарх нийтлэг асуултуудын хариултыг олоорой</p>
+  
+  <div class="faq-container">
+    <!-- FAQ 1 -->
+    <div class="faq-item">
+      <div class="faq-question">
+        <span data-en="❓ What is the Head Start Program?" data-mn="❓ Head Start хөтөлбөр гэж юу вэ?">❓ Head Start хөтөлбөр гэж юу вэ?</span>
+        <span class="faq-icon">▼</span>
+      </div>
+      <div class="faq-answer">
+        <div class="faq-answer-content">
+          <p class="en-version" data-en="The Head Start Program is a university preparation program for high school students. Students take real university-level courses at the American University of Mongolia, develop academic skills, and prepare for university admission in Mongolia and abroad.">
+            The Head Start Program is a university preparation program for high school students. Students take real university-level courses at the American University of Mongolia, develop academic skills, and prepare for university admission in Mongolia and abroad.
+          </p>
+          <p class="mn-version" data-mn="Head Start хөтөлбөр нь ахлах ангийн сурагчдыг их сургуульд бэлтгэх зорилготой хөтөлбөр юм. Сурагчид American University of Mongolia-д их сургуулийн түвшний хичээл судалж, академик ур чадвараа хөгжүүлж, дотоод болон гадаадын их сургуульд элсэхэд бэлтгэгдэнэ.">
+            Head Start хөтөлбөр нь ахлах ангийн сурагчдыг их сургуульд бэлтгэх зорилготой хөтөлбөр юм. Сурагчид American University of Mongolia-д их сургуулийн түвшний хичээл судалж, академик ур чадвараа хөгжүүлж, дотоод болон гадаадын их сургуульд элсэхэд бэлтгэгдэнэ.
+          </p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- FAQ 2 -->
+    <div class="faq-item">
+      <div class="faq-question">
+        <span data-en="❓ Who can join this program?" data-mn="❓ Хэн энэ хөтөлбөрт хамрагдаж болох вэ?">❓ Хэн энэ хөтөлбөрт хамрагдаж болох вэ?</span>
+        <span class="faq-icon">▼</span>
+      </div>
+      <div class="faq-answer">
+        <div class="faq-answer-content">
+          <p class="en-version" data-en="The program is open to high school students (typically Grades 10–12) who are motivated to prepare early for university studies.">
+            The program is open to high school students (typically Grades 10–12) who are motivated to prepare early for university studies.
+          </p>
+          <p class="mn-version" data-mn="Ахлах ангийн (ихэвчлэн 10–12-р анги) их сургуульд эртнээс бэлтгэх хүсэлтэй бүх сурагчид хамрагдах боломжтой.">
+            Ахлах ангийн (ихэвчлэн 10–12-р анги) их сургуульд эртнээс бэлтгэх хүсэлтэй бүх сурагчид хамрагдах боломжтой.
+          </p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- FAQ 3 -->
+    <div class="faq-item">
+      <div class="faq-question">
+        <span data-en="❓ Are these real university courses?" data-mn="❓ Эдгээр нь жинхэнэ их сургуулийн хичээлүүд үү?">❓ Эдгээр нь жинхэнэ их сургуулийн хичээлүүд үү?</span>
+        <span class="faq-icon">▼</span>
+      </div>
+      <div class="faq-answer">
+        <div class="faq-answer-content">
+          <p class="en-version" data-en="Yes. All courses are taught at a university level by AUM faculty and follow academic standards. Successful students earn university-level credits.">
+            Yes. All courses are taught at a university level by AUM faculty and follow academic standards. Successful students earn university-level credits.
+          </p>
+          <p class="mn-version" data-mn="Тийм. Хичээлүүд нь AUM-ийн багш нараар их сургуулийн түвшинд заагддаг бөгөөд академик стандарт хангасан. Амжилттай суралцсан сурагчид их сургуулийн кредит авна.">
+            Тийм. Хичээлүүд нь AUM-ийн багш нараар их сургуулийн түвшинд заагддаг бөгөөд академик стандарт хангасан. Амжилттай суралцсан сурагчид их сургуулийн кредит авна.
+          </p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- FAQ 4 -->
+    <div class="faq-item">
+      <div class="faq-question">
+        <span data-en="❓ Can earned credits be used later?" data-mn="❓ Авсан кредитүүдийг дараа нь ашиглаж болох уу?">❓ Авсан кредитүүдийг дараа нь ашиглаж болох уу?</span>
+        <span class="faq-icon">▼</span>
+      </div>
+      <div class="faq-answer">
+        <div class="faq-answer-content">
+          <p class="en-version" data-en="Credits earned through the Head Start Program can be counted at AUM and may be transferable to other universities, depending on their policies.">
+            Credits earned through the Head Start Program can be counted at AUM and may be transferable to other universities, depending on their policies.
+          </p>
+          <p class="mn-version" data-mn="Head Start хөтөлбөрөөр авсан кредитүүд нь AUM-д тооцогдох боломжтой бөгөөд бусад их сургуулиудын бодлогоос хамааран шилжүүлэн тооцуулах боломжтой.">
+            Head Start хөтөлбөрөөр авсан кредитүүд нь AUM-д тооцогдох боломжтой бөгөөд бусад их сургуулиудын бодлогоос хамааран шилжүүлэн тооцуулах боломжтой.
+          </p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- FAQ 5 -->
+    <div class="faq-item">
+      <div class="faq-question">
+        <span data-en="❓ How is the 50% scholarship awarded?" data-mn="❓ 50% тэтгэлэг яаж олгогддог вэ?">❓ 50% тэтгэлэг яаж олгогддог вэ?</span>
+        <span class="faq-icon">▼</span>
+      </div>
+      <div class="faq-answer">
+        <div class="faq-answer-content">
+          <p class="en-version" data-en="All students who pass the English and Math placement exam automatically receive a 50% scholarship on all Head Start courses.">
+            All students who pass the English and Math placement exam automatically receive a 50% scholarship on all Head Start courses.
+          </p>
+          <p class="mn-version" data-mn="Англи хэл болон математикийн шалгалтад тэнцсэн бүх сурагч Head Start-ийн бүх хичээлдээ автоматаар 50% тэтгэлэг авна.">
+            Англи хэл болон математикийн шалгалтад тэнцсэн бүх сурагч Head Start-ийн бүх хичээлдээ автоматаар 50% тэтгэлэг авна.
+          </p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- FAQ 6 -->
+    <div class="faq-item">
+      <div class="faq-question">
+        <span data-en="❓ When and where are classes held?" data-mn="❓ Хичээл хэзээ, хаана явагддаг вэ?">❓ Хичээл хэзээ, хаана явагддаг вэ?</span>
+        <span class="faq-icon">▼</span>
+      </div>
+      <div class="faq-answer">
+        <div class="faq-answer-content">
+          <p class="en-version" data-en="Classes are held on the AUM campus, Monday to Friday, from 15:00 to 16:30.">
+            Classes are held on the AUM campus, Monday to Friday, from 15:00 to 16:30.
+          </p>
+          <p class="mn-version" data-mn="Хичээлүүд AUM-ийн кампус дээр Даваа–Баасан гаригт 15:00–16:30 цагийн хооронд явагдана.">
+            Хичээлүүд AUM-ийн кампус дээр Даваа–Баасан гаригт 15:00–16:30 цагийн хооронд явагдана.
+          </p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- FAQ 7 -->
+    <div class="faq-item">
+      <div class="faq-question">
+        <span data-en="❓ Will this program help with studying abroad?" data-mn="❓ Гадаадад суралцахад энэ хөтөлбөр тус болох уу?">❓ Гадаадад суралцахад энэ хөтөлбөр тус болох уу?</span>
+        <span class="faq-icon">▼</span>
+      </div>
+      <div class="faq-answer">
+        <div class="faq-answer-content">
+          <p class="en-version" data-en="Yes. The program includes academic English training, university preparation workshops, and guidance on studying abroad and scholarships.">
+            Yes. The program includes academic English training, university preparation workshops, and guidance on studying abroad and scholarships.
+          </p>
+          <p class="mn-version" data-mn="Тийм. Академик англи хэл, их сургуульд бэлтгэх семинар, гадаадад суралцах болон тэтгэлгийн талаар зөвлөгөө өгдөг.">
+            Тийм. Академик англи хэл, их сургуульд бэлтгэх семинар, гадаадад суралцах болон тэтгэлгийн талаар зөвлөгөө өгдөг.
+          </p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- FAQ 8 -->
+    <div class="faq-item">
+      <div class="faq-question">
+        <span data-en="❓ Do I receive a certificate after completing the program?" data-mn="❓ Хөтөлбөр төгссөний дараа сертификат олгох уу?">❓ Хөтөлбөр төгссөний дараа сертификат олгох уу?</span>
+        <span class="faq-icon">▼</span>
+      </div>
+      <div class="faq-answer">
+        <div class="faq-answer-content">
+          <p class="en-version" data-en="Yes. Students who successfully complete the program receive an official Head Start Program Certificate.">
+            Yes. Students who successfully complete the program receive an official Head Start Program Certificate.
+          </p>
+          <p class="mn-version" data-mn="Тийм. Хөтөлбөрийг амжилттай дүүргэсэн сурагч бүр албан ёсны Head Start хөтөлбөрийн сертификат авна.">
+            Тийм. Хөтөлбөрийг амжилттай дүүргэсэн сурагч бүр албан ёсны Head Start хөтөлбөрийн сертификат авна.
+          </p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- FAQ 9 -->
+    <div class="faq-item">
+      <div class="faq-question">
+        <span data-en="❓ How do I apply?" data-mn="❓ Яаж бүртгүүлэх вэ?">❓ Яаж бүртгүүлэх вэ?</span>
+        <span class="faq-icon">▼</span>
+      </div>
+      <div class="faq-answer">
+        <div class="faq-answer-content">
+          <p class="en-version" data-en="Students apply by completing the online application form and taking the English & Math placement exam.">
+            Students apply by completing the online application form and taking the English & Math placement exam.
+          </p>
+          <p class="mn-version" data-mn="Онлайн өргөдлийн маягт бөглөж, англи хэл болон математикийн шалгалт өгснөөр бүртгүүлнэ.">
+            Онлайн өргөдлийн маягт бөглөж, англи хэл болон математикийн шалгалт өгснөөр бүртгүүлнэ.
+          </p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- FAQ 10 -->
+    <div class="faq-item">
+      <div class="faq-question">
+        <span data-en="❓ Does this program give advantage for AUM admission?" data-mn="❓ Энэ хөтөлбөр AUM-д элсэхэд давуу тал болох уу?">❓ Энэ хөтөлбөр AUM-д элсэхэд давуу тал болох уу?</span>
+        <span class="faq-icon">▼</span>
+      </div>
+      <div class="faq-answer">
+        <div class="faq-answer-content">
+          <p class="en-version" data-en="Yes. Head Start students gain early exposure to AUM academics and may receive advantages during admission.">
+            Yes. Head Start students gain early exposure to AUM academics and may receive advantages during admission.
+          </p>
+          <p class="mn-version" data-mn="Тийм. Head Start хөтөлбөрт хамрагдсан сурагчид AUM-ийн академик орчинд эрт танилцаж, элсэхэд давуу талтай болно.">
+            Тийм. Head Start хөтөлбөрт хамрагдсан сурагчид AUM-ийн академик орчинд эрт танилцаж, элсэхэд давуу талтай болно.
+          </p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- FAQ 11 -->
+    <div class="faq-item">
+      <div class="faq-question">
+        <span data-en="❓ Are the math and data science courses difficult?" data-mn="❓ Математик, дата хичээлүүд хэцүү юу?">❓ Математик, дата хичээлүүд хэцүү юу?</span>
+        <span class="faq-icon">▼</span>
+      </div>
+      <div class="faq-answer">
+        <div class="faq-answer-content">
+          <p class="en-version" data-en="The courses are designed for high school students and focus on understanding concepts rather than memorization.">
+            The courses are designed for high school students and focus on understanding concepts rather than memorization.
+          </p>
+          <p class="mn-version" data-mn="Хичээлүүд нь ахлах ангийн сурагчдад тохируулсан бөгөөд цээжлүүлэх бус ойлгуулж заахад чиглэсэн.">
+            Хичээлүүд нь ахлах ангийн сурагчдад тохируулсан бөгөөд цээжлүүлэх бус ойлгуулж заахад чиглэсэн.
+          </p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- FAQ 12 -->
+    <div class="faq-item">
+      <div class="faq-question">
+        <span data-en="❓ Is the course workload too heavy?" data-mn="❓ Хичээл хэт ачаалалтай юу?">❓ Хичээл хэт ачаалалтай юу?</span>
+        <span class="faq-icon">▼</span>
+      </div>
+      <div class="faq-answer">
+        <div class="faq-answer-content">
+          <p class="en-version" data-en="No. Each course meets once per week and focuses on building skills gradually in a supportive environment.">
+            No. Each course meets once per week and focuses on building skills gradually in a supportive environment.
+          </p>
+          <p class="mn-version" data-mn="Үгүй. Хичээлүүд долоо хоногт нэг удаа орж, сурагчдыг аажмаар хөгжүүлэхэд чиглэсэн.">
+            Үгүй. Хичээлүүд долоо хоногт нэг удаа орж, сурагчдыг аажмаар хөгжүүлэхэд чиглэсэн.
+          </p>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
 <section class="section-alt">
-<section class="section">
-  <h2 data-en="Admission Process" data-mn="Элсэлтийн үйл явц">Элсэлтийн үйл явц</h2>
-  <p class="section-subtitle" data-en="Four simple steps to get started" data-mn="Эхлэхийн тулд дөрвөн энгийн алхам">Эхлэхийн тулд дөрвөн энгийн алхам</p>
-  <div class="info-card">
-    <ol>
-      <li data-en="Submit the online application form below" data-mn="Доорх онлайн өргөдлийн маягтыг бөглөнө үү">Доорх онлайн өргөдлийн маягтыг бөглөнө үү</li>
-      <li data-en="Take the online English & Math placement exam" data-mn="Онлайн англи хэл болон математикийн шалгалт өгнө үү">Онлайн англи хэл болон математикийн шалгалт өгнө үү</li>
-      <li data-en="Receive your scholarship result" data-mn="Тэтгэлгийн үр дүнгээ хүлээн авна">Тэтгэлгийн үр дүнгээ хүлээн авна</li>
-      <li data-en="Complete enrollment and course registration" data-mn="Элсэлт болон хичээл бүртгэлээ гүйцэтгэнэ">Элсэлт болон хичээл бүртгэлээ гүйцэтгэнэ</li>
-    </ol>
-    <p style="margin-top: 32px; padding-top: 32px; border-top: 2px solid var(--border); font-size: 1.05rem;" data-en="Important: As a Head Start student, you become part of the AUM family with priority placement and scholarships already secured through the placement exam." data-mn="Чухал: Head Start сурагчийн хувьд та AUM-ийн гэр бүлийн нэг хэсэг болж, элсэлтийн шалгалтаар аль хэдийн авсан давуу эрх болон тэтгэлэгтэй болно.">
-      <strong data-en="Important:" data-mn="Чухал:">Чухал:</strong> <span data-en="As a Head Start student, you become part of the AUM family with priority placement and scholarships already secured through the placement exam." data-mn="Head Start сурагчийн хувьд та AUM-ийн гэр бүлийн нэг хэсэг болж, элсэлтийн шалгалтаар аль хэдийн авсан давуу эрх болон тэтгэлэгтэй болно.">Head Start сурагчийн хувьд та AUM-ийн гэр бүлийн нэг хэсэг болж, элсэлтийн шалгалтаар аль хэдийн авсан давуу эрх болон тэтгэлэгтэй болно.</span>
-    </p>
+<section class="section" id="contact">
+  <h2 data-en="Contact Us" data-mn="Холбоо барих">Холбоо барих</h2>
+  <p class="section-subtitle"
+     data-en="Have questions? Get in touch with us"
+     data-mn="Асуулт байвал бидэнтэй холбогдоорой">
+    Асуулт байвал бидэнтэй холбогдоорой
+  </p>
+
+  <div class="contact-container">
+    <!-- Google Map -->
+    <div class="map-box">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2541.50275057776!2d106.9266999!3d47.920904199999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5d96923f4b4d76af%3A0x26dbef2f80b23c35!2sAmerican%20University%20of%20Mongolia!5e1!3m2!1sen!2smn!4v1766553040628!5m2!1sen!2smn"
+        allowfullscreen
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+
+    <!-- Contact Info -->
+    <div class="info-card contact-info">
+      <p data-en="For detailed information about the Head Start Program, admissions, course selection, and scholarships, please contact us."
+         data-mn="Head Start хөтөлбөрийн талаар дэлгэрэнгүй мэдээлэл авах, элсэлт, хичээлийн сонголт, тэтгэлгийн талаар асуух боломжтой.">
+        Head Start хөтөлбөрийн талаар дэлгэрэнгүй мэдээлэл авах,
+        элсэлт, хичээлийн сонголт, тэтгэлгийн талаар асуух боломжтой.
+      </p>
+
+      <p>
+        <strong data-en="📍 Location" data-mn="📍 Байршил">📍 Байршил</strong><br>
+        American University of Mongolia, Ulaanbaatar
+      </p>
+
+      <p style="margin-top: 16px;">
+        <strong data-en="📧 Contact Email" data-mn="📧 Холбоо барих и-мэйл">📧 Холбоо барих и-мэйл</strong><br>
+        <a href="mailto:n.munkhbold@aum.edu.mn"
+           style="color: var(--primary); font-weight: 600;">
+          n.munkhbold@aum.edu.mn
+        </a>
+      </p>
+
+      <p style="margin-top: 16px;">
+        <strong data-en="📞 Admissions Hotline" data-mn="📞 Элсэлтийн утас">📞 Элсэлтийн утас</strong><br>
+        <a href="tel:72722626"
+           style="color: var(--primary); font-weight: 600; font-size: 1.1rem;">
+          7272-2626
+        </a>
+      </p>
+
+      <a href="#apply"
+         class="cta"
+         style="margin-top: 32px;"
+         data-en="Apply Now"
+         data-mn="Одоо бүртгүүлэх">
+        Одоо бүртгүүлэх
+      </a>
+    </div>
   </div>
 </section>
 </section>
@@ -1184,8 +2139,6 @@ footer p {
     American University of Mongolia · <span data-en="Head Start Program" data-mn="Head Start хөтөлбөр">Head Start хөтөлбөр</span>
   </p>
   <p><span data-en="Admissions Hotline:" data-mn="Элсэлтийн утас:">Элсэлтийн утас:</span> 7272-2626</p>
-  <p style="margin-top: 24px; opacity: 0.7; font-size: 0.9rem;">
-   
 </footer>
 
 <!-- Floating CTA Bar for Mobile -->
@@ -1208,6 +2161,27 @@ toggleBtn.addEventListener('click', () => {
 
   document.querySelectorAll('[data-en]').forEach(el => {
     el.textContent = currentLang === 'mn' ? el.dataset.mn : el.dataset.en;
+  });
+  
+  // Toggle language-specific content visibility
+  document.querySelectorAll('.en-version').forEach(el => {
+    el.style.display = currentLang === 'en' ? 'block' : 'none';
+  });
+  
+  document.querySelectorAll('.mn-version').forEach(el => {
+    el.style.display = currentLang === 'mn' ? 'block' : 'none';
+  });
+});
+
+// Initialize language display on page load
+document.addEventListener('DOMContentLoaded', () => {
+  // Set initial language display
+  document.querySelectorAll('.en-version').forEach(el => {
+    el.style.display = currentLang === 'en' ? 'block' : 'none';
+  });
+  
+  document.querySelectorAll('.mn-version').forEach(el => {
+    el.style.display = currentLang === 'mn' ? 'block' : 'none';
   });
 });
 
@@ -1251,6 +2225,80 @@ window.addEventListener('scroll', () => {
   }
   
   lastScroll = currentScroll;
+});
+
+// Benefit cards toggle functionality
+document.querySelectorAll('.benefit-card').forEach(card => {
+  card.addEventListener('click', () => {
+    // Close all other benefit cards
+    document.querySelectorAll('.benefit-card').forEach(otherCard => {
+      if (otherCard !== card && otherCard.classList.contains('active')) {
+        otherCard.classList.remove('active');
+      }
+    });
+    
+    // Toggle current card
+    card.classList.toggle('active');
+  });
+});
+
+// Close benefit cards when clicking outside
+document.addEventListener('click', (e) => {
+  const isBenefitCard = e.target.closest('.benefit-card');
+  const isInsideBenefits = e.target.closest('#benefits');
+  
+  if (!isBenefitCard && isInsideBenefits) {
+    document.querySelectorAll('.benefit-card').forEach(card => {
+      card.classList.remove('active');
+    });
+  }
+});
+
+// FAQ functionality
+document.querySelectorAll('.faq-item').forEach(item => {
+  const question = item.querySelector('.faq-question');
+  question.addEventListener('click', () => {
+    // Close all other FAQ items
+    document.querySelectorAll('.faq-item').forEach(otherItem => {
+      if (otherItem !== item && otherItem.classList.contains('active')) {
+        otherItem.classList.remove('active');
+      }
+    });
+    
+    // Toggle current FAQ item
+    item.classList.toggle('active');
+  });
+});
+
+// Read More functionality for course details on mobile
+document.querySelectorAll('.read-more-toggle').forEach(button => {
+  button.addEventListener('click', () => {
+    const courseDetail = button.previousElementSibling;
+    button.classList.toggle('active');
+    courseDetail.classList.toggle('expanded');
+    
+    // Change button text
+    const buttonText = button.querySelector('span:first-child');
+    if (button.classList.contains('active')) {
+      buttonText.textContent = currentLang === 'mn' ? 'Багасгах' : 'Read Less';
+    } else {
+      buttonText.textContent = currentLang === 'mn' ? 'Дэлгэрэнгүй' : 'Read More';
+    }
+  });
+});
+
+// Update Read More button text when language changes
+toggleBtn.addEventListener('click', () => {
+  setTimeout(() => {
+    document.querySelectorAll('.read-more-toggle').forEach(button => {
+      const buttonText = button.querySelector('span:first-child');
+      if (button.classList.contains('active')) {
+        buttonText.textContent = currentLang === 'mn' ? 'Багасгах' : 'Read Less';
+      } else {
+        buttonText.textContent = currentLang === 'mn' ? 'Дэлгэрэнгүй' : 'Read More';
+      }
+    });
+  }, 100);
 });
 </script>
 </body>
